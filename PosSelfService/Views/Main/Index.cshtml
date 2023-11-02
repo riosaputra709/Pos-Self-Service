@@ -1,0 +1,263 @@
+﻿@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>Home Menu</title>
+    <link rel="stylesheet" href="~/Assets/css/styleee2.css" />
+    <link href="~/Assets/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="menu">
+        <div class="div-auto">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://c.animaapp.com/q0MeXVJX/img/hero-bnr-pc-frappe-time-1--1.png" class="img-thumbnail" style="width: 100%;" />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://c.animaapp.com/q0MeXVJX/img/hero-bnr-pc-frappe-time-1--1.png" class="img-thumbnail" style="width: 100%;" />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://c.animaapp.com/q0MeXVJX/img/hero-bnr-pc-frappe-time-1--1.png" class="img-thumbnail" style="width: 100%;" />
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="menu">
+        <div class="div-auto">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-3 d-flex align-items-center" style="margin-top: 20px;">
+                        <img src="../../Assets/image/indomaretlogo.png" class="figure-img img-fluid rounded" alt="" style="min-height: 50px;">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex align-items-center">
+                        <input type="text" class="form-control" id="txtCari" placeholder="Mau pesan apa ?" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary btn-lg" type="button" onclick="btnCari_onClick()">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-3 d-flex align-items-center">
+                        <button class="nav-link btn btn-danger text-truncate" href="#" onclick="toggleCart()">
+                            <i class="fa fa-shopping-cart"></i> Keranjang
+                        </button>
+                    </div>
+
+                    <!--Panel Cart-->
+                    <div id="cart" class="cart-panel" style="margin-top: 15px;">
+                        <div class="container-fluid">
+                            <div class="cart-header">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-12" style="margin-top: 20px;">
+                                        <h6 class="">Keranjang</h6>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-12 d-flex justify-content-end">
+                                        <button class="nav-link btn btn-danger text-wrapper btn-sm" href="#" onclick="toggleCart()" style="margin-top: 10px"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cart-content">
+                                <div class="card" style="margin-bottom: 7px;padding: 3px;">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center">
+                                            <img src="../../Assets/image/coffeecapucino.jpg" alt="" class="img-thumbnail">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 nopadding" style="margin-top: 5px;">
+                                            <h5 class="" style="font-size: x-small;margin-top: 10px;"><b>Point Coffee Cappucino</b></h5>
+                                            <h5 class="text-primary" style="font-size: x-small;">Rp 20.000</h5>
+                                            <div class="input-group" style="margin-top: 15px;">
+                                                <button class="button-xs">-</button>
+                                                <p class="text-center" style="margin-left: 5px;margin-right: 5px;margin-top: 5px; font-size: x-small;">1</p>
+                                                <button class="button-xs">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card" style="margin-bottom: 7px;padding: 3px;">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center">
+                                            <img src="https://c.animaapp.com/q0MeXVJX/img/image-1@2x.png" alt="" class="img-thumbnail">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 nopadding" style="margin-top: 5px;">
+                                            <h5 class="" style="font-size: x-small;margin-top: 10px;"><b>Yummy Choice Nasi Daun Ayam Geprek</b></h5>
+                                            <h5 class="text-primary" style="font-size: x-small;">Rp 20.000</h5>
+                                            <div class="input-group" style="margin-top: 15px;">
+                                                <button class="button-xs">-</button>
+                                                <p class="text-center" style="margin-left: 5px;margin-right: 5px;margin-top: 5px; font-size: x-small;">1</p>
+                                                <button class="button-xs">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card" style="margin-bottom: 7px;padding: 3px;">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center">
+                                            <img src="../../Assets/image/matchalatte.jpg" alt="" class="img-thumbnail">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 nopadding" style="margin-top: 5px;">
+                                            <h5 class="" style="font-size: x-small;margin-top: 10px;"><b>Point Coffee Matcha Latte</b></h5>
+                                            <h5 class="text-primary" style="font-size: x-small;">Rp 20.000</h5>
+                                            <div class="input-group" style="margin-top: 15px;">
+                                                <button class="button-xs">-</button>
+                                                <p class="text-center" style="margin-left: 5px;margin-right: 5px;margin-top: 5px; font-size: x-small;">1</p>
+                                                <button class="button-xs">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="divGrid">
+                @Html.Partial("_GridView")
+            </div>
+
+        </div>
+    </div>
+    <div class="menu">
+        <div class="div-auto">
+            <hr>
+            <div class="container-fluid" style="padding-bottom: 10px;">
+                <div class="row">
+                    <div class="col-lg-9 col-md-9 col-8">
+                        <h4>Total produk : 0</h4>
+                        <h3>Rp 0</h3>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-4 d-flex align-items-center">
+                        <a href="Cart.aspx" type="button" class="btn btn-danger btn-block btn-lg" style="height: 64px;">Bayar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal Pop Up-->
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog"
+         aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Menu</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="productModalBody">
+                    <div class="row d-flex align-items-center" style="margin-bottom: 5px;">
+                        <div class="col-4">
+                            <div class="card h-100">
+                                <img src="" id="ycImage" class="img-fluid" alt="Product Image" style="width:100%">
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h5 id="ycName"></h5>
+                                </div>
+                                <div class="card-body">
+                                    <p style="font-size: smaller;" class="text-justify" id="ycDescription"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center">
+                        <p id="ycPrice" class="text-primary"></p>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center">
+                        <div class="row">
+                            <div class="col-6 form-group">
+                                <div class="input-group">
+                                    <button class="btn btn-outline-secondary" type="button" onclick="decrementQuantity()">-</button>
+                                    <input type="number" id="productQuantity" class="form-control" min="1" value="1" style="margin-left: 5px;margin-right: 5px;">
+                                    <button class="btn btn-outline-secondary" type="button" onclick="incrementQuantity()">+</button>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <a class="btn btn-danger btn-block" href="" role="button">Pesan</a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <p>Rekomendasi dari kami</p>
+                    <div class="row">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+
+        var kategory_produk = 'POINT COFFEE';
+
+        //JS modal pop up
+        function showDetail(name, description, price, imageUrl) {
+            const modalName = document.getElementById('ycName');
+            const modalDescription = document.getElementById('ycDescription');
+            const modalPrice = document.getElementById('ycPrice');
+            const modalImage = document.getElementById('ycImage');
+            modalName.innerText = name;
+            modalDescription.innerText = description;
+            modalPrice.innerText = 'Harga: ' + price;
+            modalImage.src = imageUrl;
+            document.getElementById('productQuantity').value = 1;
+        }
+
+        //JS panel cart
+        function toggleCart() {
+            var cartPanel = document.getElementById("cart");
+            var overlay = document.getElementById("overlay");
+            if (cartPanel.classList.contains("show")) {
+                cartPanel.classList.remove("show");
+                overlay.classList.remove("show");
+                document.body.style.overflow = "auto"; // Aktifkan scrolling pada body
+            } else {
+                cartPanel.classList.add("show");
+                overlay.classList.add("show");
+                document.body.style.overflow = "hidden"; // Nonaktifkan scrolling pada body
+            }
+        }
+
+        function onSearchCriteria(katprod) {
+            kategory_produk = katprod;
+            $.ajax({
+                type: "POST",
+                url: "/Main/Search",
+                data: {
+                    NAMA: $("#txtCari").val(),
+                    MERK: katprod
+                },
+                success: function (data) {
+                    $("#divGrid").html(data);
+                },
+                error: function (data) {
+                }
+            });
+        }
+
+        function btnCari_onClick() {
+            onSearchCriteria(kategory_produk);
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+</body>
+</html>
+

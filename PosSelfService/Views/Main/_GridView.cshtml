@@ -1,0 +1,49 @@
+﻿@using PosSelfService.Models;
+@{
+    List<ProdukModel> listProduk = (List<ProdukModel>)ViewData["produklist"];
+    Layout = null;
+}
+
+<div class="container-fluid" style="margin-bottom: 50px;margin-top: 10px;">
+    <div class="row">
+        <!--Produk Kategori-->
+        <div class="col-3 text-center">
+            <img src="../../Assets/image/idm_poinntcoffee.jpeg" class="img-thumbnail" alt=""
+                 style="height: 160px; margin-bottom: 12px; border-radius: 0.5rem; width: 100%; cursor: pointer;" onclick="onSearchCriteria('POINT COFFEE')">
+            <img src="../../Assets/image/idm_saybread.jpeg" class="img-thumbnail" alt=""
+                 style="height: 160px; margin-bottom: 12px; border-radius: 0.5rem; width: 100%; cursor: pointer;" onclick="onSearchCriteria('SAY BREAD')">
+            <img src="https://c.animaapp.com/q0MeXVJX/img/rectangle-7@2x.png" class="img-thumbnail" alt=""
+                 style="height: 160px; margin-bottom: 12px; border-radius: 0.5rem; width: 100%; cursor: pointer;" onclick="onSearchCriteria('Y/CHOICE')">
+            <img src="https://c.animaapp.com/q0MeXVJX/img/say-burger-logo@2x.png" class="img-thumbnail" alt=""
+                 style="height: 160px; margin-bottom: 12px; border-radius: 0.5rem; width: 100%; cursor: pointer;" onclick="onSearchCriteria('SAY BURGER')">
+        </div>
+
+        <div class="col-9 produkjual">
+            <div class="row">
+
+                @for (int i = 0; i < listProduk.Count; i++)
+                {
+                    <div class="col-4 menu-item" height: 40px; style="margin-bottom:55px">
+                        <div class="card">
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">20%</div>
+                            <img src="@listProduk[i].PRODUCTIMAGE" alt="Foto Produk" style="height:230px;max-width:100%">
+                        </div>
+                        <h5 class="text-center font_with_resolusi multi-line-text-truncate" style="margin-top: 10px;">
+                            @listProduk[i].NAMA
+                        </h5>
+                        <div class="col-12 d-flex justify-content-center">
+                            <button type="button" class="btn btn-primary"
+                                    data-toggle="modal" data-target="#productModal"
+                                    onclick="showDetail('@listProduk[i].NAMA', '@listProduk[i].DESC2', '@listProduk[i].PRICE', '@listProduk[i].PRODUCTIMAGE')">
+                                <h6 style="margin-top: 5px;">Rp @listProduk[i].PRICE</h6>
+                            </button>
+                        </div>
+                    </div><!-- Menu Item -->
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
