@@ -123,11 +123,20 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\ClsError.cs" />
+    <Compile Include="Common\ClsFungsi.cs" />
+    <Compile Include="Common\ClsInitial.cs" />
+    <Compile Include="Common\ClsKasir.cs" />
+    <Compile Include="Common\ClsKumpulanBarang.cs" />
+    <Compile Include="Common\ClsSql.cs" />
+    <Compile Include="Common\ClsToko.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InitialController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AjaxResult.cs" />
     <Compile Include="Models\ProdukModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
@@ -226,6 +235,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Main\Index.cshtml" />
     <Content Include="Views\Main\_GridView.cshtml" />
+    <Content Include="Views\Main\Specialadditional.cshtml" />
+    <Content Include="Views\Initial\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,282 @@
+﻿@using PosSelfService.Models;
+@{
+    ProdukModel produk = (ProdukModel)ViewData["produk"];
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Special Additional</title>
+    <link rel="stylesheet" href="~/Assets/css/styleee2.css" />
+    <link href="~/Assets/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="menu">
+        <div class="div-auto" style="background-color: white;">
+            <form data-multi-step="" class="multi-step-form">
+                <div class="container-fluid" style="padding-top: 36px;padding-left: 22px;">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-4 d-flex align-items-center">
+                            <div class="card">
+                                <img src="@produk.PRODUCTIMAGE" alt="" class="img-thumbnail" style="max-height: 286px;">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <h3>@produk.MERK</h3>
+                            <h3>@produk.NAMA</h3>
+                            <p class="text-justify" style="margin-top: 20px;">
+                                @produk.DESC2
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-2 d-flex justify-content-center">
+                            <b>
+                                <h4 class="text-primary" id="productModalPrice">
+                                    Rp @produk.PRICE
+                                </h4>
+                            </b>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+
+                <div class="container-fluid coffeedetail">
+                    <div class="row" style="padding: 11px;">
+                        <div class="col-12">
+                            <h5 style="margin-bottom: 20px;">Pilih Ukuran :</h5>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4 d-flex align-items-center" style="margin-bottom: 10px;">
+                            <button type="button" class="btn btn-outline-secondary" style="box-shadow: 1px 3px #888888;">
+                                <img src="~/Assets/image/icons8-cup-96.png" alt="" class="img-fluid" style="height: 190px;">
+                                <h6>Small</h6>
+                            </button>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4 d-flex align-items-center" style="margin-bottom: 10px;">
+                            <button type="button" class="btn btn-outline-secondary" style="box-shadow: 1px 3px #888888;">
+                                <img src="~/Assets/image/icons8-cup-96.png" alt="" class="img-fluid" style="height: 190px;">
+                                <h6>Medium</h6>
+                            </button>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4 d-flex align-items-center" style="margin-bottom: 10px;">
+                            <button type="button" class="btn btn-outline-secondary" style="box-shadow: 1px 3px #888888;">
+                                <img src="~/Assets/image/icons8-cup-96.png" alt="" class="img-fluid" style="height: 190px;">
+                                <h6>Large</h6>
+                            </button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row" style="padding: 11px;">
+                        <div class="col-12" style="margin-bottom: 20px;">
+                            <h5>Pilih Ukuran Gula :</h5>
+                        </div>
+                        <div class="col-3 d-flex align-items-center justify-content-center">
+                            <button type="button" class="btn btn-outline-secondary btn-block align-items-center" style="box-shadow: 1px 3px #888888;">
+                                <h6 style="font-size: smaller;" class="text-truncate">Normal</h6>
+                                100%
+                            </button>
+                        </div>
+                        <div class="col-3 d-flex align-items-center justify-content-center">
+                            <button type="button" class="btn btn-outline-secondary btn-block align-items-center" style="box-shadow: 1px 3px #888888;">
+                                <h6 style="font-size: smaller;" class="text-truncate">Less Sugar</h6>
+                                75%
+                            </button>
+                        </div>
+                        <div class="col-3 d-flex align-items-center justify-content-center">
+                            <button type="button" class="btn btn-outline-secondary btn-block align-items-center" style="box-shadow: 1px 3px #888888;">
+                                <h6 style="font-size: smaller;" class="text-truncate">Half Sugar</h6>
+                                50%
+                            </button>
+                        </div>
+                        <div class="col-3 d-flex align-items-center justify-content-center">
+                            <button type="button" class="btn btn-outline-secondary btn-block align-items-center" style="box-shadow: 1px 3px #888888;">
+                                <h6 style="font-size: smaller;" class="text-truncate">No Sugar</h6>
+                                0%
+                            </button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row" style="padding: 11px;">
+                        <div class="col-12" style="margin-bottom: 20px;">
+                            <h5>Pilih Banyak Ice :</h5>
+                        </div>
+
+                        <div class="col-3 d-flex align-items-center justify-content-center">
+                            <button type="button" class="btn btn-outline-secondary btn-block align-items-center" style="box-shadow: 1px 3px #888888;">
+                                <h6 style="font-size: smaller;" class="text-truncate">Normal</h6>
+                                100%
+                            </button>
+                        </div>
+                        <div class="col-3 d-flex align-items-center justify-content-center">
+                            <button type="button" class="btn btn-outline-secondary btn-block align-items-center" style="box-shadow: 1px 3px #888888;">
+                                <h6 style="font-size: smaller;" class="text-truncate">Less Ice</h6>
+                                75%
+                            </button>
+                        </div>
+                        <div class="col-3 d-flex align-items-center justify-content-center">
+                            <button type="button" class="btn btn-outline-secondary btn-block align-items-center" style="box-shadow: 1px 3px #888888;">
+                                <h6 style="font-size: smaller;" class="text-truncate">Half Ice</h6>
+                                50%
+                            </button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row" style="padding: 11px;">
+                        <div class="col-12">
+                            <h5 style="margin-bottom: 20px;">Pilih Susu :</h5>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                            <button type="button" class="button-wrap btn-outline-secondary d-flex align-items-center justify-content-center" style="box-shadow: 1px 3px #888888; min-height: 68px;">
+                                Regular
+                            </button>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                            <button type="button" class="button-wrap btn-outline-secondary d-flex align-items-center justify-content-center" style="box-shadow: 1px 3px #888888; min-height: 68px;">
+                                Soy Milk
+                            </button>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                            <button type="button" class="button-wrap btn-outline-secondary d-flex align-items-center justify-content-center" style="box-shadow: 1px 3px #888888; min-height: 68px;">
+                                Oat Milk
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="form-check" style="margin-left: 11px;">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Kurangi Susu
+                        </label>
+                    </div>
+                    <hr>
+                    <div class="row" style="padding: 11px;">
+                        <div class="col-12">
+                            <h5 style="margin-bottom: 20px;">Pilih Cream :</h5>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                            <button type="button" class="button-wrap btn-outline-secondary d-flex align-items-center justify-content-center" style="box-shadow: 1px 3px #888888; min-height: 68px;">
+                                No Whipped Cream
+                            </button>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                            <button type="button" class="button-wrap btn-outline-secondary d-flex align-items-center justify-content-center" style="box-shadow: 1px 3px #888888; min-height: 68px;">
+                                Whipped Cream
+                            </button>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                            <button type="button" class="button-wrap btn-outline-secondary d-flex align-items-center justify-content-center" style="box-shadow: 1px 3px #888888; min-height: 68px;">
+                                Cream Cheese
+                            </button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row" style="padding: 11px;">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                            <h5 style="margin-bottom: 20px;">Pilih Sirup :</h5>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-12 d-flex justify-content-end">
+                            <p>Optional, Pilih maksimal 2 sirup</p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                            <button type="button" class="button-wrap btn-outline-secondary d-flex align-items-center justify-content-center" style="box-shadow: 1px 3px #888888; min-height: 68px;">
+                                Vanilla
+                            </button>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                            <button type="button" class="button-wrap btn-outline-secondary d-flex align-items-center justify-content-center" style="box-shadow: 1px 3px #888888; min-height: 68px;">
+                                Caramel
+                            </button>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                            <button type="button" class="button-wrap btn-outline-secondary d-flex align-items-center justify-content-center" style="box-shadow: 1px 3px #888888; min-height: 68px;">
+                                Hazelnut
+                            </button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row" style="padding: 11px;">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                            <h5 style="margin-bottom: 20px;">Pilih Topping :</h5>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-12 d-flex justify-content-end">
+                            <p>Optional, Pilih maksimal 4 topping</p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4" style="margin-bottom: 25px;">
+                            <button type="button" class="button-wrap btn-outline-secondary d-flex align-items-center justify-content-center" style="box-shadow: 1px 3px #888888; min-height: 68px;">
+                                Coffee Jelly
+                            </button>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                            <button type="button" class="button-wrap btn-outline-secondary d-flex align-items-center justify-content-center" style="box-shadow: 1px 3px #888888; min-height: 68px;">
+                                Tropical Jelly
+                            </button>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                            <button type="button" class="button-wrap btn-outline-secondary d-flex align-items-center justify-content-center" style="box-shadow: 1px 3px #888888; min-height: 68px;">
+                                Nangka Jelly
+                            </button>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                            <button type="button" class="button-wrap btn-outline-secondary d-flex align-items-center justify-content-center" style="box-shadow: 1px 3px #888888; min-height: 68px;">
+                                Brown Sugar Konyaku
+                            </button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row" style="padding: 11px;">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                            <h5 style="margin-bottom: 20px;">Pilih Sauce :</h5>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-12 d-flex justify-content-end">
+                            <p>Optional, Pilih maksimal 2 Sauce</p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                            <button type="button" class="button-wrap btn-outline-secondary d-flex align-items-center justify-content-center" style="box-shadow: 1px 3px #888888; min-height: 68px;">
+                                Chocollate Sauce
+                            </button>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                            <button type="button" class="button-wrap btn-outline-secondary d-flex align-items-center justify-content-center" style="box-shadow: 1px 3px #888888; min-height: 68px;">
+                                Caramel Sauce
+                            </button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row" style="padding: 11px;">
+                        <div class="col-12" style="margin-bottom: 20px;">
+                            <h5>Tambah Espresso :</h5>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4">
+                            <button type="button" class="button-wrap btn-outline-secondary d-flex align-items-center justify-content-center" style="box-shadow: 1px 3px #888888; min-height: 68px;">
+                                Espresso
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <footer style="padding-bottom: 35px;padding-top: 23px;">
+                    <div class="container-fluid">
+                        <div class="input-group d-flex justify-content-center align-items-center">
+                            <button class="nav-link btn btn-secondary btn-lg " href="#" style="margin-right: 12px; height: 70px;padding: 20px;" data-previous>
+                                Kembali
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" style="height: 70px;padding: 20px;">-</button>
+                            <h5 id="productQuantity" class="text-center" style="width: 70px;margin-top: 8px;"> 1 </h5>
+                            <button type="button" class="btn btn-primary" style="height: 70px;padding: 20px;">+</button>
+                            <button class="nav-link btn btn-danger btn-lg" href="#" style="margin-left: 12px;height: 70px;padding: 20px;" data-next>Lanjut</button>
+                        </div>
+                    </div>
+                </footer>
+
+            </form>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+</body>
+</html>
