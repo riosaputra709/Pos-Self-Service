@@ -1,0 +1,45 @@
+﻿@using PosSelfService.Models;
+@{
+    String oldNikKasir = (String)ViewData["oldNikKasir"];
+    String newNikKasir = (String)ViewData["newNikKasir"];
+}
+
+
+<div class="col-12">
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    Value Di NIK Lama
+                </div>
+                <div class="card-body">
+                    @if (oldNikKasir == null || oldNikKasir == "")
+                    {
+                        <h5 class="card-title">Null</h5>
+                    }
+                    else
+                    {
+                        <h5 class="card-title">@oldNikKasir</h5>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    Value Di NIK Baru
+                </div>
+                <div class="card-body">
+                    @if (newNikKasir == null || newNikKasir == "")
+                    {
+                        <h5 class="card-title">Null</h5>
+                    }
+                    else
+                    {
+                        <h5 class="card-title">@newNikKasir</h5>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

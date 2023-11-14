@@ -1,0 +1,84 @@
+13-11-2023 16:10:33: Load Master Data mulai
+13-11-2023 16:10:33: Debug : init 1 mulai
+13-11-2023 16:10:34: Debug : init 1 selesai
+13-11-2023 16:11:41: Load Master Data mulai
+13-11-2023 16:11:41: Debug : init 1 mulai
+13-11-2023 16:11:41: Debug : init 1 selesai
+13-11-2023 16:25:56: Load Master Data mulai
+13-11-2023 16:25:56: Debug : init 1 mulai
+13-11-2023 16:25:56: Debug : init 1 selesai
+13-11-2023 16:25:56: Debug : toko mulai
+13-11-2023 16:25:56: Debug : toko selesai
+13-11-2023 16:25:56: Debug : barang mulai
+13-11-2023 16:25:56: Table 'mytestdb.mtran' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 16:25:57: Table 'mytestdb.mtran' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 16:25:57: Table 'mytestdb.bayar' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 16:25:57: Table 'mytestdb.bayar' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 16:27:15: Debug : barang selesai
+13-11-2023 16:27:39: Load Master Data mulai
+13-11-2023 16:27:39: Debug : init 1 mulai
+13-11-2023 16:27:39: Debug : init 1 selesai
+13-11-2023 16:27:39: Debug : toko mulai
+13-11-2023 16:27:39: Debug : toko selesai
+13-11-2023 16:27:39: Debug : barang mulai
+13-11-2023 16:27:39: Table 'mytestdb.mtran' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 16:27:39: Table 'mytestdb.mtran' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 16:27:39: Table 'mytestdb.bayar' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 16:27:39: Table 'mytestdb.bayar' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 16:28:56: Debug : barang selesai

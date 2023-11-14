@@ -1,0 +1,166 @@
+13-11-2023 15:00:43: Debug : barang selesai
+13-11-2023 15:01:59: Load Master Data mulai
+13-11-2023 15:01:59: Debug : init 1 mulai
+13-11-2023 15:02:00: Debug : init 1 selesai
+13-11-2023 15:02:00: Debug : toko mulai
+13-11-2023 15:02:00: Debug : toko selesai
+13-11-2023 15:02:00: Debug : barang mulai
+13-11-2023 15:02:00: Table 'mytestdb.mtran' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 15:02:00: Table 'mytestdb.mtran' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 15:02:00: Table 'mytestdb.bayar' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 15:02:00: Table 'mytestdb.bayar' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 15:03:25: Debug : barang selesai
+13-11-2023 15:08:07: Load Master Data mulai
+13-11-2023 15:08:07: Debug : init 1 mulai
+13-11-2023 15:08:08: Debug : init 1 selesai
+13-11-2023 15:08:08: Debug : toko mulai
+13-11-2023 15:08:08: Debug : toko selesai
+13-11-2023 15:08:08: Debug : barang mulai
+13-11-2023 15:08:08: Table 'mytestdb.mtran' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 15:08:08: Table 'mytestdb.mtran' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 15:08:08: Table 'mytestdb.bayar' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 15:08:08: Table 'mytestdb.bayar' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 15:09:32: Debug : barang selesai
+13-11-2023 15:10:13: Load Master Data mulai
+13-11-2023 15:10:13: Debug : init 1 mulai
+13-11-2023 15:10:14: Debug : init 1 selesai
+13-11-2023 15:10:14: Debug : toko mulai
+13-11-2023 15:10:14: Debug : toko selesai
+13-11-2023 15:10:14: Debug : barang mulai
+13-11-2023 15:10:14: Table 'mytestdb.mtran' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 15:10:14: Table 'mytestdb.mtran' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 15:10:14: Table 'mytestdb.bayar' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 15:10:14: Table 'mytestdb.bayar' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 15:11:33: Debug : barang selesai
+13-11-2023 15:12:19: Load Master Data mulai
+13-11-2023 15:12:19: Debug : init 1 mulai
+13-11-2023 15:12:19: Debug : init 1 selesai
+13-11-2023 15:12:19: Debug : toko mulai
+13-11-2023 15:12:19: Debug : toko selesai
+13-11-2023 15:12:19: Debug : barang mulai
+13-11-2023 15:12:19: Table 'mytestdb.mtran' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 15:12:19: Table 'mytestdb.mtran' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 15:12:19: Table 'mytestdb.bayar' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 15:12:19: Table 'mytestdb.bayar' doesn't exist    at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.ReadResult()
+   at MySql.Data.MySqlClient.ResultSet.NextResult()
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteScalar()
+   at PosSelfService.Common.ClsSql.SQLExecuteScalar_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 109
+13-11-2023 15:13:41: Debug : barang selesai
+13-11-2023 15:47:59: Load Master Data mulai
+13-11-2023 15:47:59: Debug : init 1 mulai
+13-11-2023 15:47:59: Debug : init 1 selesai
+13-11-2023 15:49:09: Load Master Data mulai
+13-11-2023 15:49:09: Debug : init 1 mulai
+13-11-2023 15:49:09: Debug : init 1 selesai
+13-11-2023 15:52:43: Load Master Data mulai
+13-11-2023 15:52:43: Debug : init 1 mulai
+13-11-2023 15:52:43: Debug : init 1 selesai

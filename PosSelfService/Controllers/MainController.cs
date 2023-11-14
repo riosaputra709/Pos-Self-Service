@@ -11,7 +11,7 @@ namespace PosSelfService.Controllers
     public class MainController : Controller
     {
         private MainRepository mainRepo = MainRepository.Instance;
-        public ProdukModel produkHold = new ProdukModel();
+        public static ProdukModel produkHold = new ProdukModel();
         // GET: Main
         public ActionResult Index()
         {
@@ -33,13 +33,13 @@ namespace PosSelfService.Controllers
             {
                 produkHold.NAMA = produk.NAMA.ToUpper();
 
-                string session;
+                /*string session;
                 if (System.Web.HttpContext.Current.Session["produk_nama"] != null)
                 {
                     session = System.Web.HttpContext.Current.Session["produk_nama"].ToString();
                 }
                 Session["produk_nama"] = String.IsNullOrEmpty(produk.NAMA) ? "" : produk.NAMA.ToUpper();
-                session = Session["produk_nama"].ToString();
+                session = Session["produk_nama"].ToString();*/
 
 
 

@@ -7,5 +7,6 @@ namespace PosSelfService.Common
 {
     public class ClsKumpulanBarang
     {
+        public ClsBarang[] DaftarBarang { get; set; }
     }
 }

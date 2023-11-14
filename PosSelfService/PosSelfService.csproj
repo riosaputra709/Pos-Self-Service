@@ -45,8 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IDM.MySQL">
-      <HintPath>..\..\..\..\Downloads\IDM.MySQL\IDM.MySQL.dll</HintPath>
+    <Reference Include="IDM.MySQL, Version=6.1.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\IDM.MySQL.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -123,11 +124,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\ClsBarang.cs" />
     <Compile Include="Common\ClsError.cs" />
     <Compile Include="Common\ClsFungsi.cs" />
     <Compile Include="Common\ClsInitial.cs" />
     <Compile Include="Common\ClsKasir.cs" />
     <Compile Include="Common\ClsKumpulanBarang.cs" />
+    <Compile Include="Common\ClsKumpulanPackaging.cs" />
+    <Compile Include="Common\ClsPackaging.cs" />
     <Compile Include="Common\ClsSql.cs" />
     <Compile Include="Common\ClsToko.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -237,6 +241,7 @@
     <Content Include="Views\Main\_GridView.cshtml" />
     <Content Include="Views\Main\Specialadditional.cshtml" />
     <Content Include="Views\Initial\Index.cshtml" />
+    <Content Include="Views\Initial\_GridView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,24 @@
+13-11-2023 09:01:57: Load Master Data mulai
+13-11-2023 09:01:57: Debug : init 1 mulai
+13-11-2023 09:02:03: Debug : init 1 selesai
+13-11-2023 09:02:03: Debug : toko mulai
+13-11-2023 09:02:03: Debug : toko selesai
+13-11-2023 09:03:50: Load Master Data mulai
+13-11-2023 09:03:50: Debug : init 1 mulai
+13-11-2023 09:06:02: Load Master Data mulai
+13-11-2023 09:06:02: Debug : init 1 mulai
+13-11-2023 09:14:22: Load Master Data mulai
+13-11-2023 09:14:22: Debug : init 1 mulai
+13-11-2023 09:14:32: Debug : init 1 selesai
+13-11-2023 09:16:51: Load Master Data mulai
+13-11-2023 09:16:51: Debug : init 1 mulai
+13-11-2023 09:16:59: Debug : init 1 selesai
+13-11-2023 09:19:18: Load Master Data mulai
+13-11-2023 09:19:18: Debug : init 1 mulai
+13-11-2023 09:19:24: Debug : init 1 selesai
+13-11-2023 09:20:42: Load Master Data mulai
+13-11-2023 09:20:42: Debug : init 1 mulai
+13-11-2023 09:21:00: Debug : init 1 selesai
+13-11-2023 09:27:36: Load Master Data mulai
+13-11-2023 09:27:36: Debug : init 1 mulai
+13-11-2023 09:27:40: Debug : init 1 selesai

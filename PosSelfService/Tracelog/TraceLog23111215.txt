@@ -1,0 +1,16 @@
+12-11-2023 15:46:49: Load Master Data mulai
+12-11-2023 15:46:49: Debug : init 1 mulai
+12-11-2023 15:46:53: Debug : init 1 selesai
+12-11-2023 15:46:53: Debug : toko mulai
+12-11-2023 15:47:53: Load Master Data mulai
+12-11-2023 15:47:53: Debug : init 1 mulai
+12-11-2023 15:48:03: Debug : init 1 selesai
+12-11-2023 15:48:03: Debug : toko mulai
+12-11-2023 15:50:04: Load Master Data mulai
+12-11-2023 15:50:04: Debug : init 1 mulai
+12-11-2023 15:50:04: Debug : init 1 selesai
+12-11-2023 15:50:04: Debug : toko mulai
+12-11-2023 15:59:45: Load Master Data mulai
+12-11-2023 15:59:45: Debug : init 1 mulai
+12-11-2023 15:59:46: Debug : init 1 selesai
+12-11-2023 15:59:46: Debug : toko mulai

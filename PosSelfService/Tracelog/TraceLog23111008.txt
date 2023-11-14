@@ -1,0 +1,20 @@
+10-11-2023 08:05:55: Load Master Data mulai
+10-11-2023 08:06:02: Debug : init 1 mulai
+10-11-2023 08:06:05: Key cannot be null.
+Parameter name: key    at System.Collections.Hashtable.get_Item(Object key)
+   at MySql.Data.MySqlClient.MySqlPoolManager.GetPool(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at PosSelfService.Common.ClsSql.SQLInsertIntoDatatable_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 27
+10-11-2023 08:06:31: Load Master Data mulai
+10-11-2023 08:06:31: Debug : init 1 mulai
+10-11-2023 08:06:34: Key cannot be null.
+Parameter name: key    at System.Collections.Hashtable.get_Item(Object key)
+   at MySql.Data.MySqlClient.MySqlPoolManager.GetPool(MySqlConnectionStringBuilder settings)
+   at MySql.Data.MySqlClient.MySqlConnection.Open()
+   at PosSelfService.Common.ClsSql.SQLInsertIntoDatatable_New(MySqlConnection mcon, String sQLQuery) in C:\Users\riosa\source\repos\PROJECT SD7\pos-self-service\PosSelfService\Common\ClsSql.cs:line 27
+10-11-2023 08:13:40: Load Master Data mulai
+10-11-2023 08:13:40: Debug : init 1 mulai
+10-11-2023 08:15:46: Load Master Data mulai
+10-11-2023 08:15:46: Debug : init 1 mulai
+10-11-2023 08:16:23: Load Master Data mulai
+10-11-2023 08:16:23: Debug : init 1 mulai

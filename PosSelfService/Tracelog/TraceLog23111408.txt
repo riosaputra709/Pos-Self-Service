@@ -1,0 +1,11 @@
+14-11-2023 08:17:56: Load Master Data mulai
+14-11-2023 08:17:56: Debug : init 1 mulai
+14-11-2023 08:17:56: Gagal query Initial (rows.count = 0)
+14-11-2023 08:17:56: Debug : init 1 selesai
+14-11-2023 08:19:44: Load Master Data mulai
+14-11-2023 08:19:44: Debug : init 1 mulai
+14-11-2023 08:19:44: Debug : init 1 selesai
+14-11-2023 08:22:12: Load Master Data mulai
+14-11-2023 08:22:12: Debug : init 1 mulai
+14-11-2023 08:22:12: Gagal query Initial (rows.count = 0)
+14-11-2023 08:22:12: Debug : init 1 selesai

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
+using System.Xml.Linq;
 
 namespace PosSelfService.Common
 {
@@ -13,23 +14,19 @@ namespace PosSelfService.Common
     {
         public DataTable SQLInsertIntoDatatable_New(MySqlConnection mcon, string sQLQuery)
         {
-
-            MySqlCommand mcom = new MySqlCommand();
-            MySqlDataAdapter mda = new MySqlDataAdapter();
-
             try
             {
-                mcom = new MySqlCommand("", mcon);
                 
                 if (mcon.State != ConnectionState.Open)
                 {
                     mcon.Open();
                 }
-                mcom.CommandText = sQLQuery;
-                mda = new MySqlDataAdapter(mcom);
+
+                MySqlCommand comm = new MySqlCommand(sQLQuery, mcon);
+                MySqlDataReader dr = comm.ExecuteReader();
 
                 DataTable dt = new DataTable();
-                mda.Fill(dt);
+                dt.Load(dr);
 
                 return dt;
             }
@@ -42,8 +39,10 @@ namespace PosSelfService.Common
             }
             finally
             {
-                mda.Dispose();
-                mcom.Dispose();
+                if (mcon.State != ConnectionState.Closed)
+                {
+                    mcon.Close();
+                }
             }
         }
 
@@ -68,6 +67,28 @@ namespace PosSelfService.Common
             {
                 ClsError r = new ClsError();
                 r.ErrorTryCatch(ex);
+                return false;
+            }
+        }
+
+        internal bool CekTableSQL_New(MySqlConnection mcon, string tbName)
+        {
+            try
+            {
+                if (SQLExecuteScalar_New(mcon, "Show Tables like '" + tbName + "'") + "" != "")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                ClsError r = new ClsError();
+                r.ErrorTryCatch(ex);
+
                 return false;
             }
         }

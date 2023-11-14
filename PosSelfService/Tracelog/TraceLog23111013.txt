@@ -1,0 +1,2 @@
+10-11-2023 13:10:27: Load Master Data mulai
+10-11-2023 13:10:27: Debug : init 1 mulai
