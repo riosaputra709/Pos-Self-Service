@@ -7,9 +7,15 @@
     <title>Home Menu</title>
     <link rel="stylesheet" href="~/Assets/css/styleee2.css" />
     <link href="~/Assets/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Assets/css/loader.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+
+    <div class="loader-div">
+        <img class="loader-img" src="~/Assets/image/loading.gif" style="height: 40px;width: auto;" />
+    </div>
+
     <div class="menu">
         <div class="div-auto">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -238,6 +244,7 @@
         }
 
         function onSearchCriteria(katprod) {
+            $(".loader-div").show();
             kategory_produk = katprod;
             $.ajax({
                 type: "POST",
@@ -247,9 +254,11 @@
                     MERK: katprod
                 },
                 success: function (data) {
+                    $(".loader-div").hide();
                     $("#divGrid").html(data);
                 },
                 error: function (data) {
+                    $(".loader-div").hide();
                 }
             });
         }

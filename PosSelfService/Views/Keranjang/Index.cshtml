@@ -1,0 +1,290 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Keranjang Page</title>
+    <link href="~/Assets/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Assets/css/style-tracking.css" />
+    <link rel="stylesheet" href="~/Assets/css/styleee2.css" />
+</head>
+<body>
+    <div class="menu">
+        <div class="div-auto">
+            <div class="col-12 d-flex justify-content-center" style="padding-top:  65px;">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                    <img src="~/Assets/image/indomaretlogo.png" class="figure-img img-fluid rounded" alt="">
+                </div>
+            </div>
+            <br />
+
+            <div class="col-8 mx-auto d-flex justify-content-center" style="margin-top: 20px;">
+
+                <div class="step-wizard-item current-item">
+                    <span class="progress-count">1</span>
+                    <span class="progress-label">
+                        <h6>Pesan</h6>
+                    </span>
+                </div>
+                <div class="step-wizard-item">
+                    <span class="progress-count">2</span>
+                    <span class="progress-label">
+                        <h6>Bayar</h6>
+                    </span>
+                </div>
+                <div class="step-wizard-item">
+                    <span class="progress-count">3</span>
+                    <span class="progress-label">
+                        <h6>Selesai</h6>
+                    </span>
+                </div>
+
+            </div>
+
+            <br />
+            <div class="container-fluid">
+                <h2 class="text-center" style="margin-top: 30px;margin-bottom: 50px;">Pesanan Anda</h2>
+                <div class="cartdetail">
+                    <div class="col-12">
+                        <div class="card" style="margin-bottom: 10px;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-5 col-lg-3 d-flex align-items-center justify-content-center">
+                                        <img src="https://c.animaapp.com/q0MeXVJX/img/image-1@2x.png" alt="" class="img-thumbnail" style="max-height: 180px;">
+                                    </div>
+                                    <div class="col-7 col-lg-9">
+                                        <h5>Yummy Choice</h5>
+                                        <h5>Nasi Daun Ayam Geprek</h5>
+                                        <h5 class="text-right text-primary">Rp 20.000</h5>
+                                        <div class="row">
+                                            <div class="col-12 col-lg-9 col-md-8 col-sm-6">
+                                                <div class="input-group d-flex justify-content-end" style="margin-top: 12px;">
+                                                    <button class="btn btn-outline-secondary" type="button"><i class="fa fa-trash"></i> Hapus</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                <div class="input-group d-flex justify-content-end" style="margin-top: 12px;">
+                                                    <button class="btn btn-outline-secondary" type="button" style="font-size: smaller;max-height: 35px;" onclick="decrementQuantity()">-</button>
+                                                    <input class="form-control text-center" type="number" style="margin-left: 5px;margin-right: 5px;max-width: 80px;max-height: 35px;padding-left: 25px;"
+                                                           value="104" disabled readonly>
+                                                    <button class="btn btn-outline-secondary" type="button" style="font-size: smaller;max-height: 35px;" onclick="incrementQuantity()">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" style="margin-bottom: 10px;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-5 col-lg-3 d-flex align-items-center justify-content-center">
+                                        <img src="~/Assets/image/coffeecapucino.jpg" alt="" class="img-thumbnail" style="max-height: 180px;">
+                                    </div>
+                                    <div class="col-7 col-lg-9">
+                                        <h5>Point Coffee</h5>
+                                        <h5>Coffee Cappuccino</h5>
+                                        <p>Reguler, Ice Normal, Sugar Normal</p>
+                                        <h5 class="text-right text-primary">Rp 20.000</h5>
+                                        <div class="row">
+                                            <div class="col-12 col-lg-9 col-md-8 col-sm-6">
+                                                <div class="input-group d-flex justify-content-end" style="margin-top: 12px;">
+                                                    <button class="btn btn-outline-secondary" type="button"><i class="fa fa-trash"></i> Hapus</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                <div class="input-group d-flex justify-content-end" style="margin-top: 12px;">
+                                                    <button class="btn btn-outline-secondary" type="button" style="font-size: smaller;max-height: 35px;" onclick="decrementQuantity()">-</button>
+                                                    <input class="form-control text-center" type="number" style="margin-left: 5px; margin-right: 5px; max-width: 80px; max-height: 35px; padding-left: 25px;"
+                                                           value="1" disabled readonly>
+                                                    <button class="btn btn-outline-secondary" type="button" style="font-size: smaller;max-height: 35px;" onclick="incrementQuantity()">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" style="margin-bottom: 10px;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-5 col-lg-3 d-flex align-items-center justify-content-center">
+                                        <img src="~/Assets/image/coffepalmsugar.jpg" alt="" class="img-thumbnail" style="max-height: 180px;">
+                                    </div>
+                                    <div class="col-7 col-lg-9">
+                                        <h5>Point Coffee</h5>
+                                        <h5>Coffee Palm Sugar</h5>
+                                        <p>Reguler, Ice Normal, Sugar Normal</p>
+                                        <h5 class="text-right text-primary">Rp 20.000</h5>
+                                        <div class="row">
+                                            <div class="col-12 col-lg-9 col-md-8 col-sm-6">
+                                                <div class="input-group d-flex justify-content-end" style="margin-top: 12px;">
+                                                    <button class="btn btn-outline-secondary" type="button"><i class="fa fa-trash"></i> Hapus</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                <div class="input-group d-flex justify-content-end" style="margin-top: 12px;">
+                                                    <button class="btn btn-outline-secondary" type="button" style="font-size: smaller;max-height: 35px;" onclick="decrementQuantity()">-</button>
+                                                    <input class="form-control text-center" type="number" style="margin-left: 5px; margin-right: 5px; max-width: 80px; max-height: 35px; padding-left: 25px;"
+                                                           value="1" disabled readonly>
+                                                    <button class="btn btn-outline-secondary" type="button" style="font-size: smaller;max-height: 35px;" onclick="incrementQuantity()">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" style="margin-bottom: 10px;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-5 col-lg-3 d-flex align-items-center justify-content-center">
+                                        <img src="~/Assets/image/coffepalmsugar.jpg" alt="" class="img-thumbnail" style="max-height: 180px;">
+                                    </div>
+                                    <div class="col-7 col-lg-9">
+                                        <h5>Point Coffee</h5>
+                                        <h5>Coffee Palm Sugar</h5>
+                                        <p>Reguler, Ice Normal, Sugar Normal</p>
+                                        <h5 class="text-right text-primary">Rp 20.000</h5>
+                                        <div class="row">
+                                            <div class="col-12 col-lg-9 col-md-8 col-sm-6">
+                                                <div class="input-group d-flex justify-content-end" style="margin-top: 12px;">
+                                                    <button class="btn btn-outline-secondary" type="button"><i class="fa fa-trash"></i> Hapus</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                <div class="input-group d-flex justify-content-end" style="margin-top: 12px;">
+                                                    <button class="btn btn-outline-secondary" type="button" style="font-size: smaller;max-height: 35px;" onclick="decrementQuantity()">-</button>
+                                                    <input class="form-control text-center" type="number" style="margin-left: 5px; margin-right: 5px; max-width: 80px; max-height: 35px; padding-left: 25px;"
+                                                           value="1" disabled readonly>
+                                                    <button class="btn btn-outline-secondary" type="button" style="font-size: smaller;max-height: 35px;" onclick="incrementQuantity()">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" style="margin-bottom: 10px;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-5 col-lg-3 d-flex align-items-center justify-content-center">
+                                        <img src="~/Assets/image/coffepalmsugar.jpg" alt="" class="img-thumbnail" style="max-height: 180px;">
+                                    </div>
+                                    <div class="col-7 col-lg-9">
+                                        <h5>Point Coffee</h5>
+                                        <h5>Coffee Palm Sugar</h5>
+                                        <p>Reguler, Ice Normal, Sugar Normal</p>
+                                        <h5 class="text-right text-primary">Rp 20.000</h5>
+                                        <div class="row">
+                                            <div class="col-12 col-lg-9 col-md-8 col-sm-6">
+                                                <div class="input-group d-flex justify-content-end" style="margin-top: 12px;">
+                                                    <button class="btn btn-outline-secondary" type="button"><i class="fa fa-trash"></i> Hapus</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                <div class="input-group d-flex justify-content-end" style="margin-top: 12px;">
+                                                    <button class="btn btn-outline-secondary" type="button" style="font-size: smaller;max-height: 35px;" onclick="decrementQuantity()">-</button>
+                                                    <input class="form-control text-center" type="number" style="margin-left: 5px; margin-right: 5px; max-width: 80px; max-height: 35px; padding-left: 25px;"
+                                                           value="1" disabled readonly>
+                                                    <button class="btn btn-outline-secondary" type="button" style="font-size: smaller;max-height: 35px;" onclick="incrementQuantity()">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" style="margin-bottom: 10px;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-5 col-lg-3 d-flex align-items-center justify-content-center">
+                                        <img src="~/Assets/image/coffepalmsugar.jpg" alt="" class="img-thumbnail" style="max-height: 180px;">
+                                    </div>
+                                    <div class="col-7 col-lg-9">
+                                        <h5>Point Coffee</h5>
+                                        <h5>Coffee Palm Sugar</h5>
+                                        <p>Reguler, Ice Normal, Sugar Normal</p>
+                                        <h5 class="text-right text-primary">Rp 20.000</h5>
+                                        <div class="row">
+                                            <div class="col-12 col-lg-9 col-md-8 col-sm-6">
+                                                <div class="input-group d-flex justify-content-end" style="margin-top: 12px;">
+                                                    <button class="btn btn-outline-secondary" type="button"><i class="fa fa-trash"></i> Hapus</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                <div class="input-group d-flex justify-content-end" style="margin-top: 12px;">
+                                                    <button class="btn btn-outline-secondary" type="button" style="font-size: smaller;max-height: 35px;" onclick="decrementQuantity()">-</button>
+                                                    <input class="form-control text-center" type="number" style="margin-left: 5px; margin-right: 5px; max-width: 80px; max-height: 35px; padding-left: 25px;"
+                                                           value="1" disabled readonly>
+                                                    <button class="btn btn-outline-secondary" type="button" style="font-size: smaller;max-height: 35px;" onclick="incrementQuantity()">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="margin-bottom: 10px;">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-5 col-lg-3 d-flex align-items-center justify-content-center">
+                                            <img src="~/Assets/image/coffepalmsugar.jpg" alt="" class="img-thumbnail" style="max-height: 180px;">
+                                        </div>
+                                        <div class="col-7 col-lg-9">
+                                            <h5>Point Coffee</h5>
+                                            <h5>Coffee Palm Sugar</h5>
+                                            <p>Reguler, Ice Normal, Sugar Normal</p>
+                                            <h5 class="text-right text-primary">Rp 20.000</h5>
+                                            <div class="row">
+                                                <div class="col-12 col-lg-9 col-md-8 col-sm-6">
+                                                    <div class="input-group d-flex justify-content-end" style="margin-top: 12px;">
+                                                        <button class="btn btn-outline-secondary" type="button"><i class="fa fa-trash"></i> Hapus</button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-lg-3 col-md-4 col-sm-6">
+                                                    <div class="input-group d-flex justify-content-end" style="margin-top: 12px;">
+                                                        <button class="btn btn-outline-secondary" type="button" style="font-size: smaller;max-height: 35px;" onclick="decrementQuantity()">-</button>
+                                                        <input class="form-control text-center" type="number" style="margin-left: 5px; margin-right: 5px; max-width: 80px; max-height: 35px; padding-left: 25px;"
+                                                               value="1" disabled readonly>
+                                                        <button class="btn btn-outline-secondary" type="button" style="font-size: smaller;max-height: 35px;" onclick="incrementQuantity()">+</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <hr />
+        </div>
+    </div>
+    <footer>
+        <div class="menu">
+            <div class="div-auto">
+                <div class="container-fluid" style="padding-bottom: 10px;padding-top: 10px">
+                    <div class="row">
+                        <div class="col-lg-9 col-md-9 col-8">
+                            <h6>Subtotal : Rp 72.000</h6>
+                            <h6>Potongan : Rp 5.000 (Voucher Indomaret)</h6>
+                            <h2>Total : Rp 67.000</h2>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-4">
+                            <button type="button" class="btn btn-outline-secondary btn-block" style="padding-top:7px; padding-bottom:7px">Kembali</button>
+                            <button type="button" class="btn btn-danger btn-block btn-lg">Bayar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

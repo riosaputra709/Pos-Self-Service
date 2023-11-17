@@ -1,6 +1,6 @@
-﻿@using PosSelfService.Models;
+﻿@using PosSelfService.Common;
 @{
-    ProdukModel produk = (ProdukModel)ViewData["produk"];
+    ClsBarang produk = (ClsBarang)ViewData["produk"];
     Layout = null;
 }
 
@@ -22,20 +22,20 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-4 d-flex align-items-center">
                             <div class="card">
-                                <img src="@produk.PRODUCTIMAGE" alt="" class="img-thumbnail" style="max-height: 286px;">
+                                <img src="@produk.ProductImageString" alt="" class="img-thumbnail" style="max-height: 286px;">
                             </div>
                         </div>
                         <div class="col-6">
-                            <h3>@produk.MERK</h3>
-                            <h3>@produk.NAMA</h3>
+                            <h3>@produk.Merk</h3>
+                            <h3>@produk.Nama</h3>
                             <p class="text-justify" style="margin-top: 20px;">
-                                @produk.DESC2
+                                @produk.Desc2
                             </p>
                         </div>
                         <div class="col-lg-3 col-md-3 col-2 d-flex justify-content-center">
                             <b>
                                 <h4 class="text-primary" id="productModalPrice">
-                                    Rp @produk.PRICE
+                                    Rp @produk.HargaJualRp
                                 </h4>
                             </b>
                         </div>

@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login Tes</title>
+</head>
+<body>
+    <div class="container">
+        <div class="col-8 mx-auto">
+            <input type="text" class="form-control" id="txtUsername" style="text-transform: uppercase" placeholder="Username">
+            <input type="text" class="form-control" id="txtPassword" style="text-transform: uppercase" placeholder="Password">
+            <button class="btn btn-outline-secondary" type="button" onclick="btnLogin_onClick()">
+                Login
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function btnLogin_onClick() {
+            $.ajax({
+                type: "POST",
+                url: "/Login/LoginAuth",
+                data: {
+                    USERNAME: $("#txtUsername").val(),
+                    PASSWORD: $("#txtPassword").val()
+                },
+                success: function (data) {
+                    window.location.replace("/Main/Index");
+                },
+                error: function (data) {
+                }
+            });
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>

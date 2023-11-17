@@ -1,0 +1,101 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Pembayaran Page</title>
+    <link rel="stylesheet" href="~/Assets/css/styleee2.css" />
+    <link href="~/Assets/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Assets/css/style-tracking.css" />
+</head>
+<body>
+    <div class="menu">
+        <div class="div">
+            <div class="col-12 d-flex justify-content-center" style="padding-top:  65px;">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                    <img src="~/Assets/image/indomaretlogo.png" class="figure-img img-fluid rounded" alt="">
+                </div>
+            </div>
+            <br />
+
+            <div class="col-8 mx-auto d-flex justify-content-center" style="margin-top: 20px;">
+
+                <div class="step-wizard-item">
+                    <span class="progress-count">1</span>
+                    <span class="progress-label">
+                        <h6>Pesan</h6>
+                    </span>
+                </div>
+                <div class="step-wizard-item current-item">
+                    <span class="progress-count">2</span>
+                    <span class="progress-label">
+                        <h6>Bayar</h6>
+                    </span>
+                </div>
+                <div class="step-wizard-item">
+                    <span class="progress-count">3</span>
+                    <span class="progress-label">
+                        <h6>Selesai</h6>
+                    </span>
+                </div>
+
+            </div>
+
+            <br />
+            <div class="container-fluid">
+                <div class="col-10 mx-auto" style="margin-top: 190px;margin-bottom: 80px;">
+                    <div class="row">
+                        <div class="col-6 mx-auto" style="margin-bottom:65px">
+                            <div class="row">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <a type="button" class="btn btn-outline-secondary d-flex align-items-center btn-pilih-bayar" href="/Pembayaran/PembayaranBarcode">
+                                        <img src="~/Assets/image/BPISAKU.png" alt="" class="img-fluid" style="padding: 20px;">
+                                    </a>
+                                </div>
+                                <div class="col-12 text-center" style="margin-top: 25px">
+                                    <h4>i.saku</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mx-auto" style="margin-bottom:65px">
+                            <div class="row">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <a type="button" class="btn btn-outline-secondary d-flex align-items-center btn-pilih-bayar" href="/Pembayaran/PembayaranKartu">
+                                        <img src="~/Assets/image/dompetdigital.jpg" alt="" class="img-fluid" style="padding: 20px;">
+                                    </a>
+                                </div>
+                                <div class="col-12 text-center" style="margin-top: 25px">
+                                    <h4>Dompet Digital</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 mx-auto" style="margin-bottom:65px">
+                            <div class="row">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <a type="button" class="btn btn-outline-secondary d-flex align-items-center btn-pilih-bayar" href="">
+                                        <img src="~/Assets/image/debit.png" alt="" class="img-fluid" style="padding: 20px;">
+                                    </a>
+                                </div>
+                                <div class="col-12 text-center" style="margin-top: 25px">
+                                    <h4>Kartu Debit/ Kredit</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+</body>
+</html>

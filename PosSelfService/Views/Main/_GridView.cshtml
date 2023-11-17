@@ -1,6 +1,6 @@
-﻿@using PosSelfService.Models;
+﻿@using PosSelfService.Common;
 @{
-    List<ProdukModel> listProduk = (List<ProdukModel>)ViewData["produklist"];
+    List<ClsBarang> listBarang = (List<ClsBarang>)ViewData["produklist"];
     Layout = null;
 }
 
@@ -21,21 +21,21 @@
         <div class="col-9 produkjual">
             <div class="row">
 
-                @for (int i = 0; i < listProduk.Count; i++)
+                @for (int i = 0; i < listBarang.Count; i++)
                 {
                     <div class="col-4 menu-item" style="margin-bottom:55px">
                         <div class="card">
                             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">20%</div>
-                            <img src="@listProduk[i].PRODUCTIMAGE" alt="Foto Produk" style="height:230px;max-width:100%">
+                            <img src="@listBarang[i].ProductImageString" alt="Foto Produk" style="height:230px;max-width:100%">
                         </div>
                         <h5 class="text-center font_with_resolusi multi-line-text-truncate" style="margin-top: 10px;">
-                            @listProduk[i].NAMA
+                            @listBarang[i].Nama
                         </h5>
                         <div class="col-12 d-flex justify-content-center">
                             <button type="button" class="btn btn-primary"
                                 data-toggle="modal" data-target="#productModal"
-                                onclick="showDetail('@listProduk[i].PRDCD','@listProduk[i].NAMA', '@listProduk[i].DESC2', '@listProduk[i].PRICE', '@listProduk[i].PRODUCTIMAGE')">
-                            <h6 style="margin-top: 5px;">Rp @listProduk[i].PRICE</h6>
+                                onclick="showDetail('@listBarang[i].PLU','@listBarang[i].Nama', '@listBarang[i].Desc2', '@listBarang[i].HargaJualRp', '@listBarang[i].ProductImageString')">
+                                <h6 style="margin-top: 5px;">@listBarang[i].HargaJualRp</h6>
                             </button>
                         </div>
                     </div><!-- Menu Item -->

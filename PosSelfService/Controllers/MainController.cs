@@ -1,4 +1,5 @@
-﻿using PosSelfService.Models;
+﻿using PosSelfService.Common;
+using PosSelfService.Models;
 using PosSelfService.Repositories;
 using System;
 using System.Collections.Generic;
@@ -11,39 +12,40 @@ namespace PosSelfService.Controllers
     public class MainController : Controller
     {
         private MainRepository mainRepo = MainRepository.Instance;
-        public static ProdukModel produkHold = new ProdukModel();
         // GET: Main
         public ActionResult Index()
         {
-            ProdukModel produkModel = new ProdukModel();
-            produkModel.MERK = "POINT COFFEE";
-            DoSearch(produkModel);
+            DoSearch("POINT COFFEE", "");
             return View();
         }
 
-        private void DoSearch(ProdukModel produkModel)
+        private void DoSearch(string merk, string nama)
         {
-            IList<ProdukModel> listData = mainRepo.SearchProduk(produkModel);
-            ViewData["produklist"] = listData;
+            var data = new ClsKumpulanBarang();
+            var filteredData = new List<ClsBarang>();
+
+            if (System.Web.HttpContext.Current.Session["objKumpulanBarangMain"] != null)
+            {
+                data = Session["objKumpulanBarangMain"] as ClsKumpulanBarang;
+
+                if (String.IsNullOrEmpty(nama))
+                {
+                    filteredData = data.DaftarBarang.Where(p => p.Merk == merk.ToUpper()).ToList();
+                }
+                else
+                {
+                    filteredData = data.DaftarBarang.Where(p => p.Merk == merk.ToUpper() && p.Nama.Contains(nama.ToUpper())).ToList();
+                }
+            }
+
+            ViewData["produklist"] = filteredData;
         }
 
         public ActionResult Search(ProdukModel produk)
         {
             try
             {
-                produkHold.NAMA = produk.NAMA.ToUpper();
-
-                /*string session;
-                if (System.Web.HttpContext.Current.Session["produk_nama"] != null)
-                {
-                    session = System.Web.HttpContext.Current.Session["produk_nama"].ToString();
-                }
-                Session["produk_nama"] = String.IsNullOrEmpty(produk.NAMA) ? "" : produk.NAMA.ToUpper();
-                session = Session["produk_nama"].ToString();*/
-
-
-
-                DoSearch(produk);
+                DoSearch(produk.MERK, produk.NAMA);
             }
             catch (Exception ex)
             {
@@ -53,47 +55,21 @@ namespace PosSelfService.Controllers
             return PartialView("_GridView");
         }
 
-        public ActionResult Specialadditional(int id)
+        public ActionResult Specialadditional(string id)
         {
-            ProdukModel produk = mainRepo.GetByKeyWithDtl(id);
+            var data = Session["objKumpulanBarangMain"] as ClsKumpulanBarang;
+
+            List<ClsBarang> produkList = data.DaftarBarang.Where(p => p.PLU == id).ToList();
+
+            ClsBarang produk = new ClsBarang();
+            if (produkList.Count > 0)
+            {
+                produk = produkList[0];
+            }
 
             ViewData["produk"] = produk;
             return View();
         }
-
-        /*public JsonResult GetById(int id)
-        {
-            AjaxResult ajaxResult = new AjaxResult();
-            ProdukModel result = null;
-
-            try
-            {
-                result = mainRepo.GetByKeyWithDtl(id);
-
-                if (result == null)
-                {
-                    ajaxResult.Result = AjaxResult.VALUE_ERROR;
-                    ajaxResult.ErrMesgs = new string[] {
-                        string.Format("no data with the selected key found," +
-                        "plaese refresh the screen first")
-                    };
-                    return Json(ajaxResult);
-                }
-
-                ajaxResult.Result = AjaxResult.VALUE_SUCCESS;
-                ajaxResult.Params = new object[] {
-                    result
-                };
-            }
-            catch (Exception ex)
-            {
-                ajaxResult.Result = AjaxResult.VALUE_ERROR;
-                ajaxResult.ErrMesgs = new string[] {
-                    string.Format("{0} = {1}", ex.GetType().FullName, ex.Message)
-                };
-            }
-            return Json(ajaxResult);
-        }*/
 
 
     }

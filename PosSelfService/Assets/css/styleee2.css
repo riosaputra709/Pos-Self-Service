@@ -34,6 +34,10 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
   }
+
+  .btn-pilih-bayar {
+    box-shadow: 1px 3px #888888;
+  }
   
   @media screen and (min-width: 601px) {
     .font_with_resolusi {
@@ -46,11 +50,15 @@
     .multi-line-text-truncate {
       min-height: 64px;
     }
+    .btn-pilih-bayar {
+      height: 290px;
+    }
   }
 
   .category {
     width: 75%;
   }
+
   
   @media screen and (max-width: 600px) {
     .font_with_resolusi {
@@ -61,6 +69,9 @@
     }
     .multi-line-text-truncate {
       height: 42px;
+    }
+    .btn-pilih-bayar {
+        height: 160px;
     }
   }
   
@@ -189,7 +200,7 @@
 }
 
 .cartdetail {
-  height: 1498px; 
+  height: 1305px; 
   overflow-y: auto; /* Tambahkan overflow-y untuk scrolling */
 }
 

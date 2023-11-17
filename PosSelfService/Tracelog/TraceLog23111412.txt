@@ -1,0 +1,6 @@
+14-11-2023 12:46:51: Load Master Data mulai
+14-11-2023 12:46:51: Debug : init 1 mulai
+14-11-2023 12:46:54: Debug : init 1 selesai
+14-11-2023 12:58:47: Load Master Data mulai
+14-11-2023 12:58:47: Debug : init 1 mulai
+14-11-2023 12:58:50: Debug : init 1 selesai

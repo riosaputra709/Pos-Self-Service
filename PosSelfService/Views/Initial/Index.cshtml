@@ -11,9 +11,15 @@
     <title>Initial Page</title>
     <link rel="stylesheet" href="~/Assets/css/styleee2.css" />
     <link href="~/Assets/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/Assets/css/sweetalert2.css">
+    <link rel="stylesheet" href="~/Assets/css/loader.css">
 </head>
 <body>
+
+    <div class="loader-div">
+        <img class="loader-img" src="~/Assets/image/loading.gif" style="height: 40px;width: auto;" />
+    </div>
+
     <div class="menu">
         <div class="div">
             <img src="https://c.animaapp.com/q0MeXVJX/img/hero-bnr-pc-frappe-time-1--1.png" class="img-thumbnail" style="width: 100%;" />
@@ -39,21 +45,64 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex align-items-center" style="margin-bottom:20px">
-                    <input type="text" class="form-control" id="txtCari" style="text-transform: uppercase" placeholder="MENGUBAH NIK KASIR ?" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" onclick="btnUbah_onClick()">
-                            UBAH
-                        </button>
+                @*<div class="col-lg-6 col-md-6 col-sm-6 col-6 d-flex align-items-center" style="margin-bottom:20px">
+                        <input type="text" class="form-control" id="txtCari" style="text-transform: uppercase" placeholder="MENGUBAH NIK KASIR ?" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" onclick="btnUbah_onClick()">
+                                UBAH
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div id="divGrid">
-                    @Html.Partial("_GridView")
-                </div>
+                    <div id="divGrid">
+                        @Html.Partial("_GridView")
+                    </div>*@
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+    <script src="~/Assets/js/sweetalert2.min.js"></script>
     <script>
+
+        $(document).ready(function () {
+            loadMaster();
+        });
+
+        function loadMaster() {
+            $(".loader-div").show();
+            $.ajax({
+                type: "POST",
+                url: "/Initial/LoadMaster",
+                data: {
+                },
+                success: function (returnResult) {
+                    $(".loader-div").hide();
+                    if (returnResult.Result == 'ERROR') {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: returnResult.ErrMesgs[0]
+                        })
+                    }
+                    else {
+                        Swal.fire(
+                            'Sukses !',
+                            'Load data master berhasil'
+                        )
+                    }
+                },
+                error: function (returnResult) {
+                    $(".loader-div").hide();
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: returnResult.errMesgs[0]
+                    })
+                }
+            });
+        }
+
         function btnMakanDisini() {
             $.ajax({
                 type: "POST",
@@ -61,6 +110,7 @@
                 data: {
                 },
                 success: function (data) {
+                    window.location.href = "/Main/Index";
                 },
                 error: function (data) {
                 }
@@ -82,7 +132,5 @@
             });
         }
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="~/Assets/js/bootstrap.min.js"></script>
 </body>
 </html>

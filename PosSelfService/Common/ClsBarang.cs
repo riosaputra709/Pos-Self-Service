@@ -33,6 +33,7 @@ namespace PosSelfService.Common
         public string PLU { get; set; }
         public string PLU_MD { get; set; }
         public byte[] ProductImage { get; set; }
+        public string ProductImageString { get; set; }
         public string ProductTree { get; set; }
         public string ProductTreeDesc { get; set; }
         public string PTag { get; set; }
