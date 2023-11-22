@@ -268,6 +268,11 @@ namespace PosSelfService.Controllers
                     {
                         SQLQuery += "\n" + ", '' AS PERIODEJAM";
                     }
+
+                    //tambahan mmsr dan masr
+                    SQLQuery += "\n" + ", CASE WHEN (SELECT COUNT(plu_jual) FROM pointcafe_masr WHERE plu_jual = PLU) > 0 THEN 'Y' ELSE '' END AS masr";
+                    SQLQuery += "\n" + ", CASE WHEN (SELECT COUNT(plu_jual) FROM pointcafe_mmsr WHERE plu_jual = PLU) > 0 THEN 'Y' ELSE '' END AS mmsr";
+
                     SQLQuery += "\n" + " FROM PRODMAST P";
                     SQLQuery += "\n" + " LEFT JOIN (";
                     SQLQuery += "\n" + " SELECT PRDCD, MULAI, AKHIR, IF((PRICE - (IF(DISCP>0,DISCP/100*PRICE,0)) - DISCR) > 0,(PRICE - (IF(DISCP>0,DISCP/100*PRICE,0)) - DISCR),0) 'PRICE' FROM PROMOSI WHERE IFNULL(RECID, '') <> '1'"; //link dengan table lain untuk overwrite harga jual, berdasarkan tanggal main
@@ -276,7 +281,6 @@ namespace PosSelfService.Controllers
                     {
                         SQLQuery += "\n" + " LEFT JOIN (SELECT DISTINCT PLU FROM PRODUCTCOMBO) COMBO ON P.PRDCD = COMBO.PLU";
                     }
-
                     SQLQuery += "\n" + " LEFT JOIN (SELECT CONCAT(LEVEL, ',', NOURUT, ',', PARENTID) AS PRODUCTTREE, DESKRIPSI FROM PRODUCTTREE) TREE ON P.PRODUCTTREE = TREE.PRODUCTTREE";
                     SQLQuery += "\n" + " WHERE 1=1"; //validasi dipindah ke pos net > ClsTransaksi > CekBarang
                     SQLQuery += "\n" + " AND TRIM(IFNULL(P.RECID,''))<> 1"; //untuk jualan RecID <> 1
@@ -317,6 +321,10 @@ namespace PosSelfService.Controllers
                             objKumpulanBarangMain.DaftarBarang[i].RecId = dt.Rows[i]["RECID"].ToString();
                             objKumpulanBarangMain.DaftarBarang[i].Category = dt.Rows[i]["CTGR"].ToString().ToUpper();
                             objKumpulanBarangMain.DaftarBarang[i].VAT = int.Parse(dt.Rows[i]["VAT"].ToString());
+
+                            //mmsr & masr
+                            objKumpulanBarangMain.DaftarBarang[i].mmsr = dt.Rows[i]["mmsr"].ToString();
+                            objKumpulanBarangMain.DaftarBarang[i].masr = dt.Rows[i]["masr"].ToString();
 
                             double _VAT = 10;
                             double nVAT = Convert.ToDouble(dt.Rows[i]["VAT"]);

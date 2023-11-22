@@ -76,54 +76,7 @@
                                 </div>
                             </div>
                             <div class="cart-content">
-                                <div class="card" style="margin-bottom: 7px;padding: 3px;">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center">
-                                            <img src="../../Assets/image/coffeecapucino.jpg" alt="" class="img-thumbnail">
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 nopadding" style="margin-top: 5px;">
-                                            <h5 class="" style="font-size: x-small;margin-top: 10px;"><b>Point Coffee Cappucino</b></h5>
-                                            <h5 class="text-primary" style="font-size: x-small;">Rp 20.000</h5>
-                                            <div class="input-group" style="margin-top: 15px;">
-                                                <button class="button-xs">-</button>
-                                                <p class="text-center" style="margin-left: 5px;margin-right: 5px;margin-top: 5px; font-size: x-small;">1</p>
-                                                <button class="button-xs">+</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card" style="margin-bottom: 7px;padding: 3px;">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center">
-                                            <img src="https://c.animaapp.com/q0MeXVJX/img/image-1@2x.png" alt="" class="img-thumbnail">
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 nopadding" style="margin-top: 5px;">
-                                            <h5 class="" style="font-size: x-small;margin-top: 10px;"><b>Yummy Choice Nasi Daun Ayam Geprek</b></h5>
-                                            <h5 class="text-primary" style="font-size: x-small;">Rp 20.000</h5>
-                                            <div class="input-group" style="margin-top: 15px;">
-                                                <button class="button-xs">-</button>
-                                                <p class="text-center" style="margin-left: 5px;margin-right: 5px;margin-top: 5px; font-size: x-small;">1</p>
-                                                <button class="button-xs">+</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card" style="margin-bottom: 7px;padding: 3px;">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center">
-                                            <img src="../../Assets/image/matchalatte.jpg" alt="" class="img-thumbnail">
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 nopadding" style="margin-top: 5px;">
-                                            <h5 class="" style="font-size: x-small;margin-top: 10px;"><b>Point Coffee Matcha Latte</b></h5>
-                                            <h5 class="text-primary" style="font-size: x-small;">Rp 20.000</h5>
-                                            <div class="input-group" style="margin-top: 15px;">
-                                                <button class="button-xs">-</button>
-                                                <p class="text-center" style="margin-left: 5px;margin-right: 5px;margin-top: 5px; font-size: x-small;">1</p>
-                                                <button class="button-xs">+</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -194,15 +147,15 @@
                                 </div>
                             </div>
                             <div class="col-6">
-                                <a class="btn btn-danger btn-block" role="button" id="btnModal">Pesan</a>
+                                <a class="btn btn-danger btn-block" role="button" id="btnModal" style="color:white">Pesan</a>
                             </div>
                         </div>
                     </div>
                     <hr>
-                    <p>Rekomendasi dari kami</p>
+                    @*<p>Rekomendasi dari kami</p>
                     <div class="row">
 
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>
@@ -212,33 +165,85 @@
     <script type="text/javascript">
 
         var kategory_produk = 'POINT COFFEE';
+        var cart = [];
 
         //JS modal pop up
-        function showDetail(prdcd, name, description, price, imageUrl) {
+        function showDetail(prdcd, name, description, price, imageUrl, mmsr, masr) {
             const modalName = document.getElementById('ycName');
             const modalDescription = document.getElementById('ycDescription');
             const modalPrice = document.getElementById('ycPrice');
             const modalImage = document.getElementById('ycImage');
             modalName.innerText = name;
             modalDescription.innerText = description;
-            modalPrice.innerText = 'Harga: ' + price;
+            modalPrice.innerText = 'Harga: Rp ' + price;
             modalImage.src = imageUrl;
             document.getElementById('productQuantity').value = 1;
             var buttonModal = document.getElementById('btnModal');
-            buttonModal.href = '/Main/Specialadditional/' + prdcd;
+            buttonModal.removeAttribute("href");
+            buttonModal.removeAttribute("onclick");
+            if (mmsr == "Y" || masr == "Y") {
+                buttonModal.href = '/Main/Specialadditional/' + prdcd;
+            } else {
+                buttonModal.setAttribute('onclick', "addToCart('" + prdcd + "', '" + name + "', " + price + ", '" + imageUrl + "')");
+            }
+        }
+        function addToCart(produkKode, produkName, produkPrice, produkImage) {
+            var item = {
+                prdcd: produkKode,
+                name: produkName,
+                price: produkPrice,
+                image: produkImage
+            };
+            cart.push(item);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            // Perbarui tampilan keranjang belanja di panel
+            var cartContent = document.querySelector(".cart-content");
+            cartContent.innerHTML = ""; // Kosongkan konten keranjang belanja
+
+            var total = 0;
+
+            cart.forEach(function (item) {
+
+                var isiCartHTML = `<div class="card" style="margin-bottom: 7px;padding: 3px;">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center">
+                                            <img src="` + item.image + `" alt="" class="img-thumbnail">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 nopadding" style="margin-top: 5px;">
+                                            <h5 class="" style="font-size: x-small;margin-top: 10px;"><b>` + item.name + `</b></h5>
+                                            <h5 class="text-primary" style="font-size: x-small;">`+ item.price +`</h5>
+                                            <div class="input-group" style="margin-top: 15px;">
+                                                <button class="button-xs">-</button>
+                                                <p class="text-center" style="margin-left: 5px;margin-right: 5px;margin-top: 5px; font-size: x-small;">1</p>
+                                                <button class="button-xs">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`;
+
+                var productElement = document.createElement("div");
+                productElement.innerHTML = isiCartHTML;
+                cartContent.appendChild(productElement);
+                total += item.price;
+            });
+
+            // Tambahkan total biaya ke keranjang belanja
+            var totalElement = document.createElement("div");
+            totalElement.innerHTML = "Total: $" + total;
+            cartContent.appendChild(totalElement);
         }
 
         //JS panel cart
         function toggleCart() {
             var cartPanel = document.getElementById("cart");
-            var overlay = document.getElementById("overlay");
             if (cartPanel.classList.contains("show")) {
                 cartPanel.classList.remove("show");
-                overlay.classList.remove("show");
                 document.body.style.overflow = "auto"; // Aktifkan scrolling pada body
             } else {
                 cartPanel.classList.add("show");
-                overlay.classList.add("show");
                 document.body.style.overflow = "hidden"; // Nonaktifkan scrolling pada body
             }
         }

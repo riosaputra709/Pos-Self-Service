@@ -45,6 +45,8 @@ namespace PosSelfService.Common
         public DateTime TtdTime { get; set; }
         public string Unit { get; set; }
         public double VAT { get; set; }
+        public string mmsr { get; set; }
+        public string masr { get; set; }
 
         public void GenerateInfoPajak(double nVAT, bool berlakuPajakRestoran)
         {
