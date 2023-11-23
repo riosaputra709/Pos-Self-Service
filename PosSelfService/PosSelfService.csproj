@@ -144,6 +144,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AjaxResult.cs" />
+    <Compile Include="Models\KeranjangModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ProdukModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -264,6 +265,7 @@
     <Content Include="Views\Keranjang\Index.cshtml" />
     <Content Include="Views\Pembayaran\PembayaranBarcode.cshtml" />
     <Content Include="Views\Pembayaran\PembayaranKartu.cshtml" />
+    <Content Include="Views\Main\_PanelCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

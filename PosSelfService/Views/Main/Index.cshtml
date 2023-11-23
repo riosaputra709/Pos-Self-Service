@@ -8,12 +8,69 @@
     <link rel="stylesheet" href="~/Assets/css/styleee2.css" />
     <link href="~/Assets/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="~/Assets/css/loader.css">
+    <link rel="stylesheet" href="~/Assets/css/sweetalert2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
     <div class="loader-div">
         <img class="loader-img" src="~/Assets/image/loading.gif" style="height: 40px;width: auto;" />
+    </div>
+
+    <!--Modal Pop Up-->
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog"
+         aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Menu</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="productModalBody">
+                    <div class="row d-flex align-items-center" style="margin-bottom: 5px;">
+                        <div class="col-4">
+                            <div class="card h-100">
+                                <img src="" id="ycImage" class="img-fluid" alt="Product Image" style="width:100%">
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h5 id="ycName">NAMA PRODUK</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p style="font-size: smaller;" class="text-justify" id="ycDescription">Description PRODUK</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center" style="margin-top:20px; margin-bottom20px">
+                        <b><p id="ycPrice" class="text-primary">HARGA PRODUK</p></b>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center">
+                        <div class="row">
+                            <div class="col-6 form-group">
+                                <div class="input-group">
+                                    <button class="btn btn-outline-secondary" type="button" onclick="decrementQuantity()">-</button>
+                                    <input type="number" id="txtProductQuantity" class="form-control text-center" min="1" value="1" style="margin-left: 5px;margin-right: 5px;">
+                                    <button class="btn btn-outline-secondary" type="button" onclick="incrementQuantity()">+</button>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <a class="btn btn-danger btn-block" role="button" id="btnModal" style="color:white">Pesan</a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    @*<p>Rekomendasi dari kami</p>
+                        <div class="row">
+
+                        </div>*@
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="menu">
@@ -63,22 +120,8 @@
                     </div>
 
                     <!--Panel Cart-->
-                    <div id="cart" class="cart-panel" style="margin-top: 15px;">
-                        <div class="container-fluid">
-                            <div class="cart-header">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-12" style="margin-top: 20px;">
-                                        <h6 class="">Keranjang</h6>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-12 d-flex justify-content-end">
-                                        <button class="nav-link btn btn-danger text-wrapper btn-sm" href="#" onclick="toggleCart()" style="margin-top: 10px"><span aria-hidden="true">&times;</span></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cart-content">
-                                
-                            </div>
-                        </div>
+                    <div id="divCart">
+                        @Html.Partial("_PanelCart")
                     </div>
                 </div>
             </div>
@@ -89,6 +132,7 @@
 
         </div>
     </div>
+
     <div class="menu">
         <div class="div-auto">
             <hr>
@@ -105,67 +149,14 @@
             </div>
         </div>
     </div>
-    <!--Modal Pop Up-->
-    <div class="modal fade" id="productModal" tabindex="-1" role="dialog"
-         aria-labelledby="productModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detail Menu</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" id="productModalBody">
-                    <div class="row d-flex align-items-center" style="margin-bottom: 5px;">
-                        <div class="col-4">
-                            <div class="card h-100">
-                                <img src="" id="ycImage" class="img-fluid" alt="Product Image" style="width:100%">
-                            </div>
-                        </div>
-                        <div class="col-8">
-                            <div class="card h-100">
-                                <div class="card-header">
-                                    <h5 id="ycName">NAMA PRODUK</h5>
-                                </div>
-                                <div class="card-body">
-                                    <p style="font-size: smaller;" class="text-justify" id="ycDescription">Description PRODUK</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 d-flex justify-content-center" style="margin-top:20px; margin-bottom20px">
-                        <b><p id="ycPrice" class="text-primary">HARGA PRODUK</p></b>
-                    </div>
-                    <div class="col-12 d-flex justify-content-center">
-                        <div class="row">
-                            <div class="col-6 form-group">
-                                <div class="input-group">
-                                    <button class="btn btn-outline-secondary" type="button" onclick="decrementQuantity()">-</button>
-                                    <input type="number" id="productQuantity" class="form-control text-center" min="1" value="1" style="margin-left: 5px;margin-right: 5px;">
-                                    <button class="btn btn-outline-secondary" type="button" onclick="incrementQuantity()">+</button>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <a class="btn btn-danger btn-block" role="button" id="btnModal" style="color:white">Pesan</a>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    @*<p>Rekomendasi dari kami</p>
-                    <div class="row">
 
-                    </div>*@
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <script src="~/Assets/js/sweetalert2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/Assets/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
 
         var kategory_produk = 'POINT COFFEE';
-        var cart = [];
 
         //JS modal pop up
         function showDetail(prdcd, name, description, price, imageUrl, mmsr, masr) {
@@ -173,11 +164,14 @@
             const modalDescription = document.getElementById('ycDescription');
             const modalPrice = document.getElementById('ycPrice');
             const modalImage = document.getElementById('ycImage');
+
             modalName.innerText = name;
             modalDescription.innerText = description;
             modalPrice.innerText = 'Harga: Rp ' + price;
             modalImage.src = imageUrl;
-            document.getElementById('productQuantity').value = 1;
+
+            document.getElementById('txtProductQuantity').value = 1;
+
             var buttonModal = document.getElementById('btnModal');
             buttonModal.removeAttribute("href");
             buttonModal.removeAttribute("onclick");
@@ -187,53 +181,39 @@
                 buttonModal.setAttribute('onclick', "addToCart('" + prdcd + "', '" + name + "', " + price + ", '" + imageUrl + "')");
             }
         }
+
         function addToCart(produkKode, produkName, produkPrice, produkImage) {
-            var item = {
-                prdcd: produkKode,
-                name: produkName,
-                price: produkPrice,
-                image: produkImage
-            };
-            cart.push(item);
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            // Perbarui tampilan keranjang belanja di panel
-            var cartContent = document.querySelector(".cart-content");
-            cartContent.innerHTML = ""; // Kosongkan konten keranjang belanja
-
-            var total = 0;
-
-            cart.forEach(function (item) {
-
-                var isiCartHTML = `<div class="card" style="margin-bottom: 7px;padding: 3px;">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center">
-                                            <img src="` + item.image + `" alt="" class="img-thumbnail">
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 nopadding" style="margin-top: 5px;">
-                                            <h5 class="" style="font-size: x-small;margin-top: 10px;"><b>` + item.name + `</b></h5>
-                                            <h5 class="text-primary" style="font-size: x-small;">`+ item.price +`</h5>
-                                            <div class="input-group" style="margin-top: 15px;">
-                                                <button class="button-xs">-</button>
-                                                <p class="text-center" style="margin-left: 5px;margin-right: 5px;margin-top: 5px; font-size: x-small;">1</p>
-                                                <button class="button-xs">+</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>`;
-
-                var productElement = document.createElement("div");
-                productElement.innerHTML = isiCartHTML;
-                cartContent.appendChild(productElement);
-                total += item.price;
+            $(".loader-div").show();
+            $.ajax({
+                type: "POST",
+                url: "/Main/TambahKeKeranjang",
+                data: {
+                    prdcd: produkKode,
+                    name: produkName,
+                    price: produkPrice,
+                    image: produkImage,
+                    qty: $("#txtProductQuantity").val()
+                },
+                success: function (data) {
+                    $('#productModal').modal('hide');
+                    $("#divCart").html(data);
+                    $(".loader-div").hide();
+                    Swal.fire(
+                        'Sukses !',
+                        'berhasil ditambahkan ke keranjang'
+                    )
+                },
+                error: function (data) {
+                    $('#productModal').modal('hide');
+                    $(".loader-div").hide();
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'gagal menambahkan produk ke keranjang'
+                    })
+                }
             });
 
-            // Tambahkan total biaya ke keranjang belanja
-            var totalElement = document.createElement("div");
-            totalElement.innerHTML = "Total: $" + total;
-            cartContent.appendChild(totalElement);
         }
 
         //JS panel cart
@@ -241,10 +221,9 @@
             var cartPanel = document.getElementById("cart");
             if (cartPanel.classList.contains("show")) {
                 cartPanel.classList.remove("show");
-                document.body.style.overflow = "auto"; // Aktifkan scrolling pada body
             } else {
                 cartPanel.classList.add("show");
-                document.body.style.overflow = "hidden"; // Nonaktifkan scrolling pada body
+                //document.body.style.overflow = "hidden"; // Nonaktifkan scrolling pada body
             }
         }
 
@@ -272,37 +251,72 @@
             onSearchCriteria(kategory_produk);
         }
 
-        @*function specialAdditional(Prdcd) {
-            $.ajax ({
-                type : "POST",
-                url : "@Url.Content("/Main/GetById")",
-                dataType : 'json',
-                traditional : true,
-                data : {
-                    id: Prdcd
-                },
-                success: function (returnResult) {
-                    detailProduk(returnResult.Params[0])
-                }
-            });
+        function decrementQuantity() {
+            var quantityInput = document.getElementById('txtProductQuantity');
+            var currentValue = parseInt(quantityInput.value, 10);
+
+            // Memastikan nilai tidak kurang dari minimum yang ditetapkan (1)
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
         }
 
-        function detailProduk(jsonProduk) {
-            $("#productModal").modal();
+        function incrementQuantity() {
+            var quantityInput = document.getElementById('txtProductQuantity');
+            var currentValue = parseInt(quantityInput.value, 10);
+            quantityInput.value = currentValue + 1;
+        }
 
-            $("#ycName").text(jsonProduk.NAMA);
-            $("#ycDescription").text(jsonProduk.DESC2);
-            $("#ycPrice").text("Rp " + jsonProduk.PRICE);
-            var imageElement = document.getElementById("ycImage");
-            imageElement.src = jsonProduk.PRODUCTIMAGE;
+        function decrementQuantityPC(index, prdcd, price) {
+            var quantityLabel = document.getElementById('lblQtyPC_'+index);
+            var currentValue = parseInt(quantityLabel.innerText, 10);
 
-            var buttonModal = document.getElementById('btnModal');
-            buttonModal.href = '/Main/Specialadditional/' + jsonProduk.PRDCD;
-        }*@
+            // Memastikan nilai tidak kurang dari minimum yang ditetapkan (1)
+            if (currentValue > 1) {
+                updateToCartFromPanel(prdcd, currentValue-1, price);
+            }
+
+            
+        }
+
+        function incrementQuantityPC(index, prdcd, price) {
+            var quantityLabel = document.getElementById('lblQtyPC_'+index);
+            var currentValue = parseInt(quantityLabel.innerText, 10);
+
+            updateToCartFromPanel(prdcd, currentValue+1, price);
+        }
+
+        function updateToCartFromPanel(produkKode, produkQty , produkPrice) {
+            $(".loader-div").show();
+            $.ajax({
+                type: "POST",
+                url: "/Main/UpdateKeKeranjang",
+                data: {
+                    prdcd: produkKode,
+                    price: produkPrice,
+                    qty: produkQty
+                },
+                success: function (data) {
+                    $('#productModal').modal('hide');
+                    $("#divCart").html(data);
+                    var cartPanel = document.getElementById("cart");
+                    cartPanel.classList.add("show");
+                    $(".loader-div").hide();
+                },
+                error: function (data) {
+                    $('#productModal').modal('hide');
+                    $(".loader-div").hide();
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'gagal menambahkan produk ke keranjang'
+                    })
+                }
+            });
+
+        }
 
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="~/Assets/js/bootstrap.min.js"></script>
 </body>
 </html>
 

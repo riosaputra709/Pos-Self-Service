@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static System.Collections.Specialized.BitVector32;
 
 namespace PosSelfService.Controllers
 {
@@ -16,6 +17,16 @@ namespace PosSelfService.Controllers
         public ActionResult Index()
         {
             DoSearch("POINT COFFEE", "");
+
+            //Load Panel Cart
+            List<KeranjangModel> listCart = new List<KeranjangModel>();
+
+            if (System.Web.HttpContext.Current.Session["keranjang_belanja"] != null)
+            {
+                listCart = Session["keranjang_belanja"] as List<KeranjangModel>;
+            }
+            ViewData["cartlist"] = listCart;
+
             return View();
         }
 
@@ -53,6 +64,61 @@ namespace PosSelfService.Controllers
             }
 
             return PartialView("_GridView");
+        }
+
+        public ActionResult TambahKeKeranjang(string prdcd, string name, int price, string image, int qty)
+        {
+            KeranjangModel cart = new KeranjangModel();
+            
+            cart.prdcd = prdcd;
+            cart.name = name;
+            cart.price = price*qty;
+            cart.image = image;
+            cart.qty = qty;
+
+            List<KeranjangModel> listCart = new List<KeranjangModel>();
+            
+            if (System.Web.HttpContext.Current.Session["keranjang_belanja"] != null)
+            {
+                listCart = Session["keranjang_belanja"] as List<KeranjangModel>; //ambil data dari session
+
+                int indexListCart = listCart.FindIndex(item => item.prdcd == prdcd);
+                if (indexListCart > -1) {
+                    KeranjangModel itemToUpdate = listCart[indexListCart];
+                    itemToUpdate.qty += qty;
+                    itemToUpdate.price += cart.price;
+                }
+                else
+                {
+                    listCart.Add(cart);
+                }
+            }
+            else
+            {
+                listCart.Add(cart);
+            }
+
+
+            Session["keranjang_belanja"] = listCart; //perbarui panel cart
+            ViewData["cartlist"] = listCart;
+
+            return PartialView("_PanelCart");
+        }
+
+        public ActionResult UpdateKeKeranjang(string prdcd, int price, int qty)
+        {
+            List<KeranjangModel> listCart = Session["keranjang_belanja"] as List<KeranjangModel>; //ambil data dari session
+
+            int indexListCart = listCart.FindIndex(item => item.prdcd == prdcd); //mencari data yang sama
+            KeranjangModel itemToUpdate = listCart[indexListCart];
+            int hargasatuan = itemToUpdate.price / itemToUpdate.qty;
+            itemToUpdate.qty = qty;
+            itemToUpdate.price = hargasatuan * qty;
+
+            Session["keranjang_belanja"] = listCart; //perbarui panel cart
+            ViewData["cartlist"] = listCart;
+
+            return PartialView("_PanelCart");
         }
 
         public ActionResult Specialadditional(string id)
