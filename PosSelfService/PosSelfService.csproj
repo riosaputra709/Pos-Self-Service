@@ -131,6 +131,7 @@
     <Compile Include="Common\ClsKasir.cs" />
     <Compile Include="Common\ClsKumpulanBarang.cs" />
     <Compile Include="Common\ClsKumpulanPackaging.cs" />
+    <Compile Include="Common\ClsMasr.cs" />
     <Compile Include="Common\ClsPackaging.cs" />
     <Compile Include="Common\ClsSql.cs" />
     <Compile Include="Common\ClsToko.cs" />

@@ -127,7 +127,7 @@
             </div>
 
             <div id="divGrid">
-                @Html.Partial("_GridView")
+                @Html.Partial("_GridView");
             </div>
 
         </div>
@@ -178,41 +178,63 @@
             if (mmsr == "Y" || masr == "Y") {
                 buttonModal.href = '/Main/Specialadditional/' + prdcd;
             } else {
-                buttonModal.setAttribute('onclick', "addToCart('" + prdcd + "', '" + name + "', " + price + ", '" + imageUrl + "')");
+                buttonModal.setAttribute('onclick', "addToCart('" + prdcd + "')");
             }
         }
 
-        function addToCart(produkKode, produkName, produkPrice, produkImage) {
+        function alertPesanError(textError) {
+            $(".loader-div").hide();
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: textError
+            })
+        }
+
+        function addToCart(produkKode) {
             $(".loader-div").show();
-            $.ajax({
-                type: "POST",
-                url: "/Main/TambahKeKeranjang",
-                data: {
-                    prdcd: produkKode,
-                    name: produkName,
-                    price: produkPrice,
-                    image: produkImage,
-                    qty: $("#txtProductQuantity").val()
-                },
-                success: function (data) {
-                    $('#productModal').modal('hide');
-                    $("#divCart").html(data);
-                    $(".loader-div").hide();
-                    Swal.fire(
-                        'Sukses !',
-                        'berhasil ditambahkan ke keranjang'
-                    )
-                },
-                error: function (data) {
-                    $('#productModal').modal('hide');
-                    $(".loader-div").hide();
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'gagal menambahkan produk ke keranjang'
-                    })
-                }
-            });
+            if ($('#txtProductQuantity').val() < 1) {
+                $('#productModal').modal('hide');
+                alertPesanError('Jumlah produk yang ingin dipesan harus lebih dari 0');
+            }
+            else {
+                $.ajax({
+                    type: "POST",
+                    url: "/Main/TambahKeKeranjang",
+                    data: {
+                        prdcd: produkKode,
+                        qty: $("#txtProductQuantity").val()
+                    },
+                    success: function (data) {
+                        if (data.indexOf('<div id="errorMessagePanelCart"') === -1) {
+                            $('#productModal').modal('hide');
+                            $("#divCart").html(data);
+                            $(".loader-div").hide();
+                            Swal.fire(
+                                'Sukses !',
+                                'berhasil ditambahkan ke keranjang'
+                            );
+                        } else {
+                            $('#productModal').modal('hide');
+                            $(".loader-div").hide();
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'gagal menambahkan produk ke keranjang'
+                            });
+                        }
+                    },
+                    error: function (data) {
+                        $('#productModal').modal('hide');
+                        $(".loader-div").hide();
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'gagal menambahkan produk ke keranjang'
+                        })
+                    }
+                });
+            }
 
         }
 
@@ -273,7 +295,7 @@
 
             // Memastikan nilai tidak kurang dari minimum yang ditetapkan (1)
             if (currentValue > 1) {
-                updateToCartFromPanel(prdcd, currentValue-1, price);
+                updateToCartFromPanel(prdcd, currentValue-1);
             }
 
             
@@ -283,17 +305,16 @@
             var quantityLabel = document.getElementById('lblQtyPC_'+index);
             var currentValue = parseInt(quantityLabel.innerText, 10);
 
-            updateToCartFromPanel(prdcd, currentValue+1, price);
+            updateToCartFromPanel(prdcd, currentValue+1);
         }
 
-        function updateToCartFromPanel(produkKode, produkQty , produkPrice) {
+        function updateToCartFromPanel(produkKode, produkQty) {
             $(".loader-div").show();
             $.ajax({
                 type: "POST",
                 url: "/Main/UpdateKeKeranjang",
                 data: {
                     prdcd: produkKode,
-                    price: produkPrice,
                     qty: produkQty
                 },
                 success: function (data) {

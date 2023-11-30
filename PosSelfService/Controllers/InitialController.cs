@@ -417,6 +417,84 @@ namespace PosSelfService.Controllers
                 _ObjError.TraceLogDebugOnly("barang selesai");
                 #endregion
 
+                #region masr / mmsr
+
+                //masr
+                List<ClsMasr> listMasr = new List<ClsMasr>();
+                SQLQuery = "SELECT * FROM pointcafe_masr ORDER BY PLU_JUAL," +
+                    " KEL_SPCL_REQ = 'Upsize' DESC," +
+                    " KEL_SPCL_REQ = 'Syrup' DESC," +
+                    " KEL_SPCL_REQ = 'Topping' DESC," +
+                    " KEL_SPCL_REQ = 'Sauce' DESC," +
+                    " KEL_SPCL_REQ = 'Add. Cup' DESC," +
+                    " KEL_SPCL_REQ = 'Substitusi' DESC," +
+                    " KEL_SPCL_REQ = 'Extra' DESC," +
+                    " KEL_SPCL_REQ ASC;";
+                dt = _ObjSQL.SQLInsertIntoDatatable_New(Mcon, SQLQuery);
+
+                if (dt.Rows != null)
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            ClsMasr objMasr = new ClsMasr();
+
+                            objMasr.PLU_JUAL = dt.Rows[i]["PLU_JUAL"].ToString();
+                            objMasr.PLU_BHN_BAKU = dt.Rows[i]["PLU_BHN_BAKU"].ToString();
+                            objMasr.PLU_ADDITIONAL = dt.Rows[i]["PLU_ADDITIONAL"].ToString();
+                            objMasr.PLU_PENGGANTI = dt.Rows[i]["PLU_PENGGANTI"].ToString();
+                            objMasr.KET_SPECIAL_REQUEST = dt.Rows[i]["KET_SPECIAL_REQUEST"].ToString();
+                            objMasr.VALUE = int.Parse(dt.Rows[i]["VALUE"].ToString());
+                            objMasr.SATUAN = dt.Rows[i]["SATUAN"].ToString();
+                            objMasr.MAX_PLU_JUAL = int.Parse(dt.Rows[i]["MAX_PLU_JUAL"].ToString());
+                            objMasr.MAX_ADD = int.Parse(dt.Rows[i]["MAX_ADD"].ToString());
+                            objMasr.KEL_SPCL_REQ = dt.Rows[i]["KEL_SPCL_REQ"].ToString();
+                            objMasr.DESKRIPSI_SR = dt.Rows[i]["DESKRIPSI_SR"].ToString();
+                            objMasr.ADDID = dt.Rows[i]["ADDID"].ToString();
+                            objMasr.ADDTIME = (DateTime)dt.Rows[i]["ADDTIME"];
+
+                            listMasr.Add(objMasr);
+                        }
+                    }
+                    Session["objMasr"] = listMasr;
+                }
+
+                //mmsr
+                List<ClsMmsr> listMmsr = new List<ClsMmsr>();
+                SQLQuery = "SELECT * FROM pointcafe_mmsr ORDER BY plu_jual," +
+                    " plu_bhn_baku = '20069643' DESC," +
+                    " plu_bhn_baku = '20082341' DESC," +
+                    " plu_bhn_baku = '20069028' DESC," +
+                    " plu_bhn_baku ASC";
+                dt = _ObjSQL.SQLInsertIntoDatatable_New(Mcon, SQLQuery);
+
+                if (dt.Rows != null)
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            ClsMmsr objMmsr = new ClsMmsr();
+
+                            objMmsr.PLU_JUAL = dt.Rows[i]["PLU_JUAL"].ToString();
+                            objMmsr.PLU_BHN_BAKU = dt.Rows[i]["PLU_BHN_BAKU"].ToString();
+                            objMmsr.KET_SPEC_REQ = dt.Rows[i]["KET_SPEC_REQ"].ToString();
+                            objMmsr.SINGKATAN = dt.Rows[i]["SINGKATAN"].ToString();
+                            objMmsr.VALUE_SR = int.Parse(dt.Rows[i]["VALUE_SR"].ToString());
+                            objMmsr.SATUAN = dt.Rows[i]["SATUAN"].ToString();
+                            objMmsr.KEL_SPCL_REQ = dt.Rows[i]["KEL_SPCL_REQ"].ToString();
+                            objMmsr.ADDID = dt.Rows[i]["ADDID"].ToString();
+                            objMmsr.ADDTIME = (DateTime)dt.Rows[i]["ADDTIME"];
+
+                            listMmsr.Add(objMmsr);
+                        }
+                    }
+                    Session["objMmsr"] = listMmsr;
+                }
+
+                #endregion
+
                 ajaxResult.Result = AjaxResult.VALUE_SUCCESS;
             }
             catch (Exception ex)

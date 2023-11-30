@@ -1,14 +1,21 @@
 ﻿@using PosSelfService.Models;
 @{
+    var qtyError = ViewData.ModelState["PanelCartError"]?.Errors.FirstOrDefault()?.ErrorMessage;
     List<KeranjangModel> listCart = (List<KeranjangModel>)ViewData["cartList"];
     Layout = null;
 }
+
+@if (!string.IsNullOrEmpty(qtyError))
+{
+    <div id="errorMessagePanelCart" hidden>@qtyError</div>
+}
+
 <div id="cart" class="cart-panel" style="margin-top: 15px;">
     <div class="container-fluid">
         <div class="cart-header">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-12" style="margin-top: 20px;">
-                    <h6 class="">Keranjang</h6>
+                    <h6 id="lblKeranjang">Keranjang</h6>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-12 d-flex justify-content-end">
                     <button class="btn btn-danger text-wrapper btn-sm" onclick="toggleCart()" style="margin-top: 10px"><span aria-hidden="true">&times;</span></button>
