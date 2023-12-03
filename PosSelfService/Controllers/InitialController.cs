@@ -23,6 +23,7 @@ namespace PosSelfService.Controllers
         public ClsSql _ObjSQL = new ClsSql();
         public ClsFungsi _ObjFungsi = new ClsFungsi();
         public BaseRepository br = new BaseRepository();
+        public DefaultImage di = new DefaultImage();
 
         // GET: Initial
         public ActionResult Index()
@@ -386,7 +387,30 @@ namespace PosSelfService.Controllers
                                 ? new byte[0]  
                                 : (byte[])dt.Rows[i]["PRODUCTIMAGE"];
                             string base64String = Convert.ToBase64String(blobData);
-                            objKumpulanBarangMain.DaftarBarang[i].ProductImageString = string.Format("data:{0};base64,{1}", "image/jpeg", base64String);
+
+                            if (String.IsNullOrEmpty(base64String))
+                            {
+                                if (dt.Rows[i]["MERK"].ToString() == "POINT COFFEE")
+                                {
+                                    objKumpulanBarangMain.DaftarBarang[i].ProductImageString = di.PointCoffeePath;
+                                }
+                                else if (dt.Rows[i]["MERK"].ToString() == "Y/CHOICE")
+                                {
+                                    objKumpulanBarangMain.DaftarBarang[i].ProductImageString = di.YummyChoicePath;
+                                }
+                                else if (dt.Rows[i]["MERK"].ToString() == "SAY BURGER")
+                                {
+                                    objKumpulanBarangMain.DaftarBarang[i].ProductImageString = di.SayBurgerPath;
+                                }
+                                else
+                                {
+                                    objKumpulanBarangMain.DaftarBarang[i].ProductImageString = di.SayBreadPath;
+                                }
+                            }
+                            else
+                            {
+                                objKumpulanBarangMain.DaftarBarang[i].ProductImageString = string.Format("data:{0};base64,{1}", "image/jpeg", base64String);
+                            }
 
                             objKumpulanBarangMain.DaftarBarang[i].Nama = dt.Rows[i]["NAMA"].ToString();
                             objKumpulanBarangMain.DaftarBarang[i].PeriodeJam = dt.Rows[i]["PERIODEJAM"].ToString() + "";

@@ -145,6 +145,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AjaxResult.cs" />
+    <Compile Include="Common\DefaultImage.cs" />
     <Compile Include="Models\KeranjangModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ProdukModel.cs" />
@@ -189,6 +190,8 @@
     <Content Include="Assets\image\idm_poinntcoffee.jpeg" />
     <Content Include="Assets\image\idm_sato.jpeg" />
     <Content Include="Assets\image\idm_saybread.jpeg" />
+    <Content Include="Assets\image\idm_sayburger.png" />
+    <Content Include="Assets\image\idm_yummy.png" />
     <Content Include="Assets\image\idn_sayburger.jpeg" />
     <Content Include="Assets\image\indomaretlogo.png" />
     <Content Include="Assets\image\large.png" />

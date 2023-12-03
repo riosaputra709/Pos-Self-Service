@@ -112,7 +112,7 @@
                             }
                         </div>
                         <hr />
-                    }
+                     }
                 </div>
                 <hr>
 
@@ -164,7 +164,7 @@
             additionalKel.forEach(group => {
                 const btnActive = group.querySelectorAll(".btn.active");
                 const lblSpec = group.querySelector("h5[lblKelSpecReq]");
-                var idLbl = lblSpec.id;
+                var idLbl = lblSpec.id.split(".").join("");
                 var bhn = []
 
                 btnActive.forEach(button => {
@@ -172,7 +172,7 @@
                 });
 
                 var item = {
-                    kelSpecReq: idLbl,
+                    kelSpecReq: idLbl.split(" ").join(""),
                     objAdditional: bhn
                 };
                 additionalBhn.push(item)

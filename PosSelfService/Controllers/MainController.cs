@@ -2,6 +2,7 @@
 using PosSelfService.Models;
 using PosSelfService.Repositories;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -70,11 +71,17 @@ namespace PosSelfService.Controllers
         public ActionResult TambahKeKeranjang(string prdcd, int qty, List<AdditionalRequestModel> bahan)
         {
             List<KeranjangModel> result = new List<KeranjangModel>();
+            
             try
             {
                 if (qty < 1)
                 {
                     throw new Exception("Jumlah harus lebih dari 0");
+                }
+
+                if (bahan == null)
+                {
+                    bahan = new List<AdditionalRequestModel>();
                 }
 
                 //cari data dari session kumpulan barang
@@ -90,17 +97,17 @@ namespace PosSelfService.Controllers
                 KeranjangModel cart = new KeranjangModel();
 
                 cart.prdcd = prdcd;
+                cart.qty = qty;
                 cart.name = filteredData.Nama;
                 cart.price = int.Parse(filteredData.HargaJualRp.ToString()) * qty;
                 cart.image = filteredData.ProductImageString;
-                cart.qty = qty;
-
+                cart.additionalRequests = bahan;
 
                 if (System.Web.HttpContext.Current.Session["keranjang_belanja"] != null)
                 {
                     result = Session["keranjang_belanja"] as List<KeranjangModel>; //ambil data dari session keranjang
 
-                    int indexListCart = result.FindIndex(item => item.prdcd == prdcd);
+                    int indexListCart = result.FindIndex(item => (item.prdcd == prdcd) && (item.additionalRequests.SequenceEqual(cart.additionalRequests) == true));
                     if (indexListCart > -1)
                     {
                         KeranjangModel itemToUpdate = result[indexListCart];

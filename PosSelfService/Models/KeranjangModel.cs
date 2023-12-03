@@ -13,7 +13,7 @@ namespace PosSelfService.Models
         public string image { get; set; }
         public int qty { get; set;}
 
-        List<AdditionalRequestModel> additionalRequests { get; set; }
+        public List<AdditionalRequestModel> additionalRequests { get; set; }
     }
 
     public class AdditionalRequestModel
