@@ -143,7 +143,7 @@
                         <h3>Rp 0</h3>
                     </div>
                     <div class="col-lg-3 col-md-3 col-4 d-flex align-items-center">
-                        <a href="Cart.aspx" type="button" class="btn btn-danger btn-block btn-lg" style="height: 64px;">Bayar</a>
+                        <button type="button" class="btn btn-danger btn-block btn-lg" style="height: 64px;" onclick="btnbayar_onclick()">Bayar</button>
                     </div>
                 </div>
             </div>
@@ -271,6 +271,10 @@
 
         function btnCari_onClick() {
             onSearchCriteria(kategory_produk);
+        }
+
+        function btnbayar_onclick() {
+            window.location.href = "/Keranjang/Index";
         }
 
         function decrementQuantity() {

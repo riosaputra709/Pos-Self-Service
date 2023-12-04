@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PosSelfService.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,14 @@ namespace PosSelfService.Controllers
         // GET: Keranjang
         public ActionResult Index()
         {
+            List<KeranjangModel> listCart = new List<KeranjangModel>();
+
+            if (System.Web.HttpContext.Current.Session["keranjang_belanja"] != null)
+            {
+                listCart = Session["keranjang_belanja"] as List<KeranjangModel>;
+            }
+            ViewData["cartlist"] = listCart;
+
             return View();
         }
     }

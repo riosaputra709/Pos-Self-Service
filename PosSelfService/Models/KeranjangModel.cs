@@ -19,6 +19,6 @@ namespace PosSelfService.Models
     public class AdditionalRequestModel
     {
         public string kelSpecReq { get; set; }
-        public List<string> objAdditional { get; set; }
+        public string objAdditional { get; set; }
     }
 }
