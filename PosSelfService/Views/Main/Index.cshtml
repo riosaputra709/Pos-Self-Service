@@ -139,8 +139,8 @@
             <div class="container-fluid" style="padding-bottom: 10px;">
                 <div class="row">
                     <div class="col-lg-9 col-md-9 col-8">
-                        <h4>Total produk : 0</h4>
-                        <h3>Rp 0</h3>
+                        <h4 id="lblTotalProduk">Total produk : 0</h4>
+                        <h3 id="lblTotalHarga">Rp 0</h3>
                     </div>
                     <div class="col-lg-3 col-md-3 col-4 d-flex align-items-center">
                         <button type="button" class="btn btn-danger btn-block btn-lg" style="height: 64px;" onclick="btnbayar_onclick()">Bayar</button>
@@ -158,6 +158,10 @@
 
         var kategory_produk = 'POINT COFFEE';
 
+        $(document).ready(function () {
+            updateFooter();
+        })
+
         //JS modal pop up
         function showDetail(prdcd, name, description, price, imageUrl, mmsr, masr) {
             const modalName = document.getElementById('ycName');
@@ -173,10 +177,9 @@
             document.getElementById('txtProductQuantity').value = 1;
 
             var buttonModal = document.getElementById('btnModal');
-            buttonModal.removeAttribute("href");
             buttonModal.removeAttribute("onclick");
             if (mmsr == "Y" || masr == "Y") {
-                buttonModal.href = '/Main/Specialadditional/' + prdcd;
+                buttonModal.setAttribute('onclick', "goToSpecReq('" + prdcd + "')");
             } else {
                 buttonModal.setAttribute('onclick', "addToCart('" + prdcd + "')");
             }
@@ -189,6 +192,17 @@
                 title: 'Oops...',
                 text: textError
             })
+        }
+
+        function goToSpecReq(produkKode) {
+            $(".loader-div").show();
+            if ($('#txtProductQuantity').val() < 1) {
+                $('#productModal').modal('hide');
+                alertPesanError('Jumlah produk yang ingin dipesan harus lebih dari 0');
+            }
+            else {
+                window.location.href = "/Main/SpecialAdditional?id=" + produkKode + "&qty=" + $('#txtProductQuantity').val()
+            }
         }
 
         function addToCart(produkKode) {
@@ -209,6 +223,7 @@
                         if (data.indexOf('<div id="errorMessagePanelCart"') === -1) {
                             $('#productModal').modal('hide');
                             $("#divCart").html(data);
+                            updateFooter();
                             $(".loader-div").hide();
                             Swal.fire(
                                 'Sukses !',
@@ -235,7 +250,14 @@
                     }
                 });
             }
+        }
 
+        function updateFooter() {
+            var labelTotalQty = document.getElementById('lblTotalQtyHide').innerText;
+            var labelTotalPrice = document.getElementById('lblTotalHargaHide').innerText;
+
+            document.getElementById('lblTotalProduk').innerText = "Total Produk : " + labelTotalQty;
+            document.getElementById('lblTotalHarga').innerText = "Rp " + labelTotalPrice;
         }
 
         //JS panel cart
@@ -300,9 +322,7 @@
             // Memastikan nilai tidak kurang dari minimum yang ditetapkan (1)
             if (currentValue > 1) {
                 updateToCartFromPanel(prdcd, currentValue-1);
-            }
-
-            
+            }    
         }
 
         function incrementQuantityPC(index, prdcd, price) {
@@ -324,6 +344,7 @@
                 success: function (data) {
                     $('#productModal').modal('hide');
                     $("#divCart").html(data);
+                    updateFooter();
                     var cartPanel = document.getElementById("cart");
                     cartPanel.classList.add("show");
                     $(".loader-div").hide();

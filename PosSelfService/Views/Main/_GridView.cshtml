@@ -34,8 +34,8 @@
                         <div class="col-12 d-flex justify-content-center">
                             <button type="button" class="btn btn-primary"
                                 data-toggle="modal" data-target="#productModal"
-                                onclick="showDetail('@listBarang[i].PLU','@listBarang[i].Nama', '@listBarang[i].Desc2', '@listBarang[i].HargaJualRp', '@listBarang[i].ProductImageString', '@listBarang[i].mmsr', '@listBarang[i].masr')">
-                                <h6 style="margin-top: 5px;">Rp @listBarang[i].HargaJualRp</h6>
+                                onclick="showDetail('@listBarang[i].PLU','@listBarang[i].Nama', '@listBarang[i].Desc2', '@listBarang[i].HargaJualRp.ToString("N0")', '@listBarang[i].ProductImageString', '@listBarang[i].mmsr', '@listBarang[i].masr')">
+                                <h6 style="margin-top: 5px;">Rp @listBarang[i].HargaJualRp.ToString("N0")</h6>
                             </button>
                         </div>
                     </div><!-- Menu Item -->

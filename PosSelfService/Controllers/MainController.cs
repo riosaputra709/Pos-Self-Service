@@ -29,6 +29,16 @@ namespace PosSelfService.Controllers
             }
             ViewData["cartlist"] = listCart;
 
+            int totalHarga = 0;
+            int totalQty = 0;
+            for (int i = 0; i < listCart.Count; i++)
+            {
+                totalHarga += listCart[i].price;
+                totalQty += listCart[i].qty;
+            }
+            ViewData["totalHarga"] = totalHarga;
+            ViewData["totalQty"] = totalQty;
+
             return View();
         }
 
@@ -79,11 +89,6 @@ namespace PosSelfService.Controllers
                     throw new Exception("Jumlah harus lebih dari 0");
                 }
 
-                if (bahan == null)
-                {
-                    bahan = new List<AdditionalRequestModel>();
-                }
-
                 //cari data dari session kumpulan barang
                 var data = Session["objKumpulanBarangMain"] as ClsKumpulanBarang;
                 ClsBarang filteredData = new ClsBarang();
@@ -106,8 +111,35 @@ namespace PosSelfService.Controllers
                 if (System.Web.HttpContext.Current.Session["keranjang_belanja"] != null)
                 {
                     result = Session["keranjang_belanja"] as List<KeranjangModel>; //ambil data dari session keranjang
+                    int indexListCart = -1;
 
-                    int indexListCart = result.FindIndex(item => (item.prdcd == prdcd) && (item.additionalRequests.SequenceEqual(cart.additionalRequests) == true));
+                    for (int i = 0; i < result.Count; i++)
+                    {
+                        if (result[i].prdcd == prdcd)
+                        {
+                            if (bahan != null)
+                            {
+                                bool cekObjAdditional = true;
+
+                                for (int j = 0; j < result[i].additionalRequests.Count; j++)
+                                {
+                                    if (result[i].additionalRequests[j].kelSpecReq == cart.additionalRequests[j].kelSpecReq)
+                                    {
+                                        if (result[i].additionalRequests[j].objAdditional != cart.additionalRequests[j].objAdditional)
+                                        {
+                                            cekObjAdditional = false;
+                                        }
+                                    }
+                                }
+                                if (cekObjAdditional == true)
+                                {
+                                    indexListCart = i;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
                     if (indexListCart > -1)
                     {
                         KeranjangModel itemToUpdate = result[indexListCart];
@@ -127,6 +159,17 @@ namespace PosSelfService.Controllers
                 Session["keranjang_belanja"] = result; //perbarui panel cart
                 ViewData["cartlist"] = result;
 
+                int totalHarga = 0;
+                int totalQty = 0;
+                
+                for (int i = 0; i < result.Count; i++)
+                {
+                    totalHarga += result[i].price;
+                    totalQty += result[i].qty;
+                }
+                ViewData["totalHarga"] = totalHarga;
+                ViewData["totalQty"] = totalQty;
+
                 return PartialView("_PanelCart");
             }
             catch (Exception ex)
@@ -134,7 +177,6 @@ namespace PosSelfService.Controllers
                 ModelState.AddModelError("PanelCartError", ex.Message);
                 return PartialView("_PanelCart");
             }
-
             
         }
 
@@ -144,17 +186,28 @@ namespace PosSelfService.Controllers
 
             int indexListCart = listCart.FindIndex(item => item.prdcd == prdcd); //mencari data yang sama
             KeranjangModel itemToUpdate = listCart[indexListCart];
-            int hargasatuan = itemToUpdate.price / itemToUpdate.qty;
+            int hargasatuan = itemToUpdate.price / itemToUpdate.qty; //ambil dari session keranjang
             itemToUpdate.qty = qty;
             itemToUpdate.price = hargasatuan * qty;
 
             Session["keranjang_belanja"] = listCart; //perbarui panel cart
             ViewData["cartlist"] = listCart;
 
+            int totalHarga = 0;
+            int totalQty = 0;
+
+            for (int i = 0; i < listCart.Count; i++)
+            {
+                totalHarga += listCart[i].price;
+                totalQty += listCart[i].qty;
+            }
+            ViewData["totalHarga"] = totalHarga;
+            ViewData["totalQty"] = totalQty;
+
             return PartialView("_PanelCart");
         }
 
-        public ActionResult Specialadditional(string id)
+        public ActionResult SpecialAdditional(string id, int qty)
         {
             var data = Session["objKumpulanBarangMain"] as ClsKumpulanBarang;
             var objMasr = Session["objMasr"] as List<ClsMasr>;
@@ -180,6 +233,7 @@ namespace PosSelfService.Controllers
             }
 
             ViewData["produk"] = produk;
+            ViewData["quantity"] = qty;
             ViewData["listMasr"] = filteredListMasr;
             ViewData["groupMasr"] = groupKelMasr;
             ViewData["listMmsr"] = filteredListMmsr;

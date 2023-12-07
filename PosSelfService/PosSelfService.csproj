@@ -261,7 +261,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Main\Index.cshtml" />
     <Content Include="Views\Main\_GridView.cshtml" />
-    <Content Include="Views\Main\Specialadditional.cshtml" />
+    <Content Include="Views\Main\SpecialAdditional.cshtml" />
     <Content Include="Views\Initial\Index.cshtml" />
     <Content Include="Views\Initial\_GridView.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />

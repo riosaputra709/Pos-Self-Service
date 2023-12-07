@@ -1,6 +1,7 @@
 ﻿@using PosSelfService.Common;
 @{
     ClsBarang produk = (ClsBarang)ViewData["produk"];
+    int quantity = (int)ViewData["quantity"];
     List<ClsMasr> listMasr = (List<ClsMasr>)ViewData["listMasr"];
     List<ClsMmsr> listMmsr = (List<ClsMmsr>)ViewData["listMmsr"];
     List<ClsMasr> groupMasr = (List<ClsMasr>)ViewData["groupMasr"];
@@ -53,7 +54,7 @@
                         <div class="col-lg-3 col-md-3 col-2 d-flex justify-content-center">
                             <b>
                                 <h4 class="text-primary" id="productModalPrice">
-                                    Rp @produk.HargaJualRp
+                                    Rp @produk.HargaJualRp.ToString("N0")
                                 </h4>
                             </b>
                         </div>
@@ -119,12 +120,12 @@
                 <footer style="padding-bottom: 35px;padding-top: 23px;">
                     <div class="container-fluid">
                         <div class="input-group d-flex justify-content-center align-items-center">
-                            <button class="nav-link btn btn-secondary btn-lg " href="#" style="margin-right: 12px; height: 70px;padding: 20px;">
+                            <button class="nav-link btn btn-secondary btn-lg " href="/Main/Index" style="margin-right: 12px; height: 70px;padding: 20px;">
                                 Kembali
                             </button>
-                            <button type="button" class="btn btn-outline-secondary" style="height: 70px;padding: 20px;">-</button>
-                            <h5 id="productQuantity" class="text-center" style="width: 70px;margin-top: 8px;">1</h5>
-                            <button type="button" class="btn btn-primary" style="height: 70px;padding: 20px;">+</button>
+                            <button type="button" class="btn btn-outline-secondary" style="height: 70px;padding: 20px;" onclick="decrementQuantity()">-</button>
+                            <h5 id="productQuantity" class="text-center" style="width: 70px;margin-top: 8px;">@quantity</h5>
+                            <button type="button" class="btn btn-primary" style="height: 70px;padding: 20px;" onclick="incrementQuantity()">+</button>
                             <a class="nav-link btn btn-danger btn-lg" style="margin-left: 12px;height: 70px;padding: 20px;color:white" onclick="AddToCart()">Lanjut</a>
                         </div>
                     </div>
@@ -156,6 +157,23 @@
             });
         });
 
+        function decrementQuantity() {
+            var quantityLabel = document.getElementById('productQuantity');
+            var currentValue = parseInt(quantityLabel.innerText, 10);
+
+            // Memastikan nilai tidak kurang dari minimum yang ditetapkan (1)
+            if (currentValue > 1) {
+                quantityLabel.innerText = currentValue - 1;
+            }
+        }
+
+        function incrementQuantity() {
+            var quantityLabel = document.getElementById('productQuantity');
+            var currentValue = parseInt(quantityLabel.innerText, 10);
+
+            quantityLabel.innerText = currentValue + 1;
+        }
+
         function AddToCart() {
             $(".loader-div").show();
 
@@ -164,15 +182,19 @@
             additionalKel.forEach(group => {
                 const btnActive = group.querySelectorAll(".btn.active");
                 const lblSpec = group.querySelector("h5[lblKelSpecReq]");
-                var idLbl = lblSpec.id.split(".").join("");
-                var bhn = [];
+                var idLbl = lblSpec.id;
+                var bhn = "";
 
                 btnActive.forEach(button => {
-                    bhn.push(button.value);
+                    bhn += button.value + ",";
                 });
 
+                if (bhn != "") {
+                    bhn.substring(0, bhn.length - 1);
+                }
+
                 var item = {
-                    kelSpecReq: idLbl.split(" ").join(""),
+                    kelSpecReq: idLbl,
                     objAdditional: bhn
                 };
                 additionalBhn.push(item)

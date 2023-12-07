@@ -2,6 +2,8 @@
 @{
     var qtyError = ViewData.ModelState["PanelCartError"]?.Errors.FirstOrDefault()?.ErrorMessage;
     List<KeranjangModel> listCart = (List<KeranjangModel>)ViewData["cartList"];
+    int totalHarga = (int)ViewData["totalHarga"];
+    int totalQty = (int)ViewData["totalQty"];
     Layout = null;
 }
 
@@ -23,6 +25,26 @@
             </div>
         </div>
         <div class="cart-content">
+
+            @if (totalQty == 0)
+            {
+                <h5 id="lblTotalQtyHide" hidden>0</h5>
+            }
+            else
+            {
+                <h5 id="lblTotalQtyHide" hidden>@totalQty</h5>
+            }
+
+            @if (totalHarga == 0)
+            {
+                <h5 id="lblTotalHargaHide" hidden>0</h5>
+            }
+            else
+            {
+                <h5 id="lblTotalHargaHide" hidden>@totalHarga.ToString("N0")</h5>
+            }
+
+
             @if (@listCart != null)
             {
                 for (int i = 0; i < listCart.Count; i++)
@@ -34,7 +56,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12 nopadding" style="margin-top: 5px;">
                                 <h5 class="" style="font-size: x-small;margin-top: 10px;"><b>@listCart[i].name</b></h5>
-                                <h5 class="text-primary" style="font-size: x-small;">@listCart[i].price</h5>
+                                <h5 class="text-primary" style="font-size: x-small;">@listCart[i].price.ToString("N0")</h5>
                                 <div class="input-group" style="margin-top: 15px;">
                                     <button class="button-xs" onclick="decrementQuantityPC(@i, '@listCart[i].prdcd', '@listCart[i].price')">-</button>
                                     <p class="text-center" id="lblQtyPC_@i" style="margin-left: 5px;margin-right: 5px;margin-top: 5px; font-size: x-small;">@listCart[i].qty</p>
