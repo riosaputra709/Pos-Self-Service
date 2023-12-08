@@ -315,30 +315,30 @@
             quantityInput.value = currentValue + 1;
         }
 
-        function decrementQuantityPC(index, prdcd, price) {
+        function decrementQuantityPC(index, id) {
             var quantityLabel = document.getElementById('lblQtyPC_'+index);
             var currentValue = parseInt(quantityLabel.innerText, 10);
 
             // Memastikan nilai tidak kurang dari minimum yang ditetapkan (1)
             if (currentValue > 1) {
-                updateToCartFromPanel(prdcd, currentValue-1);
+                updateToCartFromPanel(id, currentValue-1);
             }    
         }
 
-        function incrementQuantityPC(index, prdcd, price) {
+        function incrementQuantityPC(index, id) {
             var quantityLabel = document.getElementById('lblQtyPC_'+index);
             var currentValue = parseInt(quantityLabel.innerText, 10);
 
-            updateToCartFromPanel(prdcd, currentValue+1);
+            updateToCartFromPanel(id, currentValue+1);
         }
 
-        function updateToCartFromPanel(produkKode, produkQty) {
+        function updateToCartFromPanel(idKeranjang, produkQty) {
             $(".loader-div").show();
             $.ajax({
                 type: "POST",
                 url: "/Main/UpdateKeKeranjang",
                 data: {
-                    prdcd: produkKode,
+                    id: idKeranjang,
                     qty: produkQty
                 },
                 success: function (data) {

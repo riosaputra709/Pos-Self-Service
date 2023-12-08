@@ -7,6 +7,7 @@ namespace PosSelfService.Models
 {
     public class KeranjangModel
     {
+        public int id { get; set; }
         public string prdcd { get; set; }
         public string name { get;set; }
         public int price { get;set; }

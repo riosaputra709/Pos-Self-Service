@@ -1,6 +1,7 @@
 ﻿@using PosSelfService.Models;
 @{
     List<KeranjangModel> listCart = (List<KeranjangModel>)ViewData["cartList"];
+    int totalHarga = (int)ViewData["totalHarga"];
     Layout = null;
 }
 
@@ -13,8 +14,15 @@
     <link href="~/Assets/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="~/Assets/css/style-tracking.css" />
     <link rel="stylesheet" href="~/Assets/css/styleee2.css" />
+    <link rel="stylesheet" href="~/Assets/css/loader.css">
+    <link rel="stylesheet" href="~/Assets/css/sweetalert2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <div class="loader-div">
+        <img class="loader-img" src="~/Assets/image/loading.gif" style="height: 40px;width: auto;" />
+    </div>
+
     <div class="menu">
         <div class="div-auto">
             <div class="col-12 d-flex justify-content-center" style="padding-top:  65px;">
@@ -60,25 +68,31 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-5 col-lg-3 d-flex align-items-center justify-content-center">
-                                                <img src="@listCart[i].image" alt="" class="img-thumbnail" style="max-height: 180px;">
+                                                <img src="@listCart[i].image" alt="" class="img-thumbnail">
                                             </div>
                                             <div class="col-7 col-lg-9">
-                                                <h5>Point Coffee</h5>
+                                                <h5>POINT COFFEE</h5>
                                                 <h5>@listCart[i].name</h5>
-                                                <p>Reguler, Ice Normal, Sugar Normal</p>
+                                                @if (listCart[i].additionalRequests != null)
+                                                {
+                                                    <br />
+                                                    for (int j = 0; j < listCart[i].additionalRequests.Count; j++)
+                                                    {
+                                                        if (listCart[i].additionalRequests[j].objAdditional != null)
+                                                        {
+                                                            <h6 style="font-size:smaller">@listCart[i].additionalRequests[j].kelSpecReq : @listCart[i].additionalRequests[j].objAdditional</h6>
+                                                        }
+                                                    }
+                                                }
                                                 <h5 class="text-right text-primary">@listCart[i].price.ToString("N0")</h5>
                                                 <div class="row">
-                                                    <div class="col-12 col-lg-9 col-md-8 col-sm-6">
+                                                    <div class="col-12">
                                                         <div class="input-group d-flex justify-content-end" style="margin-top: 12px;">
-                                                            <button class="btn btn-outline-secondary" type="button"><i class="fa fa-trash"></i> Hapus</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 col-lg-3 col-md-4 col-sm-6">
-                                                        <div class="input-group d-flex justify-content-end" style="margin-top: 12px;">
-                                                            <button class="btn btn-outline-secondary" type="button" style="font-size: smaller;max-height: 35px;" onclick="decrementQuantity()">-</button>
-                                                            <input class="form-control text-center" type="number" style="margin-left: 5px; margin-right: 5px; max-width: 80px; max-height: 35px; padding-left: 25px;"
+                                                            <button class="btn btn-outline-secondary" type="button" style="margin-right:15px" onclick="btnHapus_onClick('@listCart[i].id')"><i class="fa fa-trash"></i> Hapus</button>
+                                                            <button class="btn btn-outline-secondary" type="button" style="font-size: smaller;" onclick="decrementQuantity(@i, '@listCart[i].id')">-</button>
+                                                            <input id="txtQty_@i" class="form-control text-center" type="number" style="margin-left: 5px; margin-right: 5px; max-width: 80px;"
                                                                    value="@listCart[i].qty" disabled readonly>
-                                                            <button class="btn btn-outline-secondary" type="button" style="font-size: smaller;max-height: 35px;" onclick="incrementQuantity()">+</button>
+                                                            <button class="btn btn-outline-secondary" type="button" style="font-size: smaller;" onclick="incrementQuantity(@i, '@listCart[i].id')">+</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -101,27 +115,134 @@
                 <div class="container-fluid" style="padding-bottom: 10px;padding-top: 10px">
                     <div class="row">
                         <div class="col-lg-9 col-md-9 col-8">
-                            <h6>Subtotal : Rp 72.000</h6>
-                            <h6>Potongan : Rp 5.000 (Voucher Indomaret)</h6>
-                            <h2>Total : Rp 67.000</h2>
+                            <h6>Subtotal : Rp @totalHarga.ToString("N0")  </h6>
+                            <h6>Potongan : Rp 5,000 (Voucher Indomaret)</h6>
+                            <h2 style="margin-top:12px">Total : Rp @totalHarga.ToString("N0")</h2>
                         </div>
                         <div class="col-lg-3 col-md-3 col-4">
-                            <button type="button" class="btn btn-outline-secondary btn-block" style="padding-top:7px; padding-bottom:7px" onclick="btnKembali_onclick()">Kembali</button>
+                            <a href="/Main/Index" type="button" class="btn btn-outline-secondary btn-block" style="padding-top:7px; padding-bottom:7px">Kembali</a>
                             <button type="button" class="btn btn-danger btn-block btn-lg" onclick="btnBayar_onclick()">Bayar</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
+    </footer><div id="divCart">
 
+    </div>
+
+    <script src="~/Assets/js/sweetalert2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/Assets/js/bootstrap.min.js"></script>
     <script>
-        function btnKembali_onclick() {
-            window.location.href = "/Main/Index";
+        function decrementQuantity(index, id) {
+            var quantityInput = document.getElementById('txtQty_' + index);
+            var currentValue = parseInt(quantityInput.value, 10);
+
+            // Memastikan nilai tidak kurang dari minimum yang ditetapkan (1)
+            if (currentValue > 1) {
+                updateToCart(id, currentValue - 1);
+            }
         }
-        function btnBayar_onclick() {
-            window.location.href = "/Pembayaran/Index";
+
+        function incrementQuantity(index, id) {
+            var quantityInput = document.getElementById('txtQty_' + index);
+            var currentValue = parseInt(quantityInput.value, 10);
+
+            updateToCart(id, currentValue + 1);
         }
+
+        function btnHapus_onClick(idKeranjang) {
+            Swal.fire({
+                title: "Ingin menghapus produk dari keranjang?",
+                showDenyButton: true,
+                showCancelButton: false,
+                confirmButtonText: "Iya",
+                denyButtonText: `Tidak`
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    hapusProduk(idKeranjang);
+                } 
+            });
+        }
+
+        function hapusProduk(idKeranjang) {
+            $(".loader-div").show();
+            $.ajax({
+                type: "POST",
+                url: "/Keranjang/HapusProdukKeranjang",
+                data: {
+                    id: idKeranjang
+                },
+                success: function (returnResult) {
+                    $(".loader-div").hide();
+                    if (returnResult.Result == 'ERROR') {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: returnResult.ErrMesgs[0]
+                        })
+                    }
+                    else {
+                        Swal.fire({
+                            title: "Sukses !",
+                            text: "Berhasil menghapus produk dari keranjang",
+                            icon: "success",
+                            showCancelButton: false,
+                            confirmButtonColor: "#3085d6",
+                            cancelButtonColor: "#d33",
+                            confirmButtonText: "OK"
+                        }).then((result) => {
+                            window.location.reload();
+                        });
+                    }
+                },
+                error: function (returnResult) {
+                    $(".loader-div").hide();
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: returnResult.errMesgs[0]
+                    })
+                }
+            });
+        }
+
+        function updateToCart(idKeranjang, produkQty) {
+            $(".loader-div").show();
+            $.ajax({
+                type: "POST",
+                url: "/Keranjang/UpdateKeKeranjang",
+                data: {
+                    id: idKeranjang,
+                    qty: produkQty
+                },
+                success: function (returnResult) {
+                    $(".loader-div").hide();
+                    if (returnResult.Result == 'ERROR') {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: returnResult.ErrMesgs[0]
+                        })
+                    }
+                    else {
+                        window.location.reload();
+                    }
+                },
+                error: function (returnResult) {
+                    $(".loader-div").hide();
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: returnResult.errMesgs[0]
+                    })
+                }
+            });
+
+        }
+
     </script>
 </body>
 </html>

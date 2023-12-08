@@ -58,9 +58,9 @@
                                 <h5 class="" style="font-size: x-small;margin-top: 10px;"><b>@listCart[i].name</b></h5>
                                 <h5 class="text-primary" style="font-size: x-small;">@listCart[i].price.ToString("N0")</h5>
                                 <div class="input-group" style="margin-top: 15px;">
-                                    <button class="button-xs" onclick="decrementQuantityPC(@i, '@listCart[i].prdcd', '@listCart[i].price')">-</button>
+                                    <button class="button-xs" onclick="decrementQuantityPC(@i, '@listCart[i].id')">-</button>
                                     <p class="text-center" id="lblQtyPC_@i" style="margin-left: 5px;margin-right: 5px;margin-top: 5px; font-size: x-small;">@listCart[i].qty</p>
-                                    <button class="button-xs" onclick="incrementQuantityPC(@i, '@listCart[i].prdcd', '@listCart[i].price')">+</button>
+                                    <button class="button-xs" onclick="incrementQuantityPC(@i, '@listCart[i].id')">+</button>
                                 </div>
                             </div>
                         </div>

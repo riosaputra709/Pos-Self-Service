@@ -100,7 +100,6 @@ namespace PosSelfService.Controllers
                 }
 
                 KeranjangModel cart = new KeranjangModel();
-
                 cart.prdcd = prdcd;
                 cart.qty = qty;
                 cart.name = filteredData.Nama;
@@ -108,6 +107,7 @@ namespace PosSelfService.Controllers
                 cart.image = filteredData.ProductImageString;
                 cart.additionalRequests = bahan;
 
+                //cek apakah produk sebelumnya sudah ada
                 if (System.Web.HttpContext.Current.Session["keranjang_belanja"] != null)
                 {
                     result = Session["keranjang_belanja"] as List<KeranjangModel>; //ambil data dari session keranjang
@@ -123,9 +123,9 @@ namespace PosSelfService.Controllers
 
                                 for (int j = 0; j < result[i].additionalRequests.Count; j++)
                                 {
-                                    if (result[i].additionalRequests[j].kelSpecReq == cart.additionalRequests[j].kelSpecReq)
+                                    if (result[i].additionalRequests[j].kelSpecReq == bahan[j].kelSpecReq)
                                     {
-                                        if (result[i].additionalRequests[j].objAdditional != cart.additionalRequests[j].objAdditional)
+                                        if (result[i].additionalRequests[j].objAdditional != bahan[j].objAdditional)
                                         {
                                             cekObjAdditional = false;
                                         }
@@ -148,11 +148,13 @@ namespace PosSelfService.Controllers
                     }
                     else
                     {
+                        cart.id = result[result.Count -1].id + 1; //mengambil id paling terakhir keranjang ditambah 1
                         result.Add(cart);
                     }
                 }
                 else
                 {
+                    cart.id = 1; //karena keranjang sebelumnya tidak ada maka id nya 1
                     result.Add(cart);
                 }
 
@@ -180,13 +182,14 @@ namespace PosSelfService.Controllers
             
         }
 
-        public ActionResult UpdateKeKeranjang(string prdcd, int qty)
+        public ActionResult UpdateKeKeranjang(int id, int qty)
         {
             List<KeranjangModel> listCart = Session["keranjang_belanja"] as List<KeranjangModel>; //ambil data dari session
 
-            int indexListCart = listCart.FindIndex(item => item.prdcd == prdcd); //mencari data yang sama
+            int indexListCart = listCart.FindIndex(item => item.id == id); //mencari data yang sama di keranjang
+            
             KeranjangModel itemToUpdate = listCart[indexListCart];
-            int hargasatuan = itemToUpdate.price / itemToUpdate.qty; //ambil dari session keranjang
+            int hargasatuan = itemToUpdate.price / itemToUpdate.qty; 
             itemToUpdate.qty = qty;
             itemToUpdate.price = hargasatuan * qty;
 
@@ -230,6 +233,10 @@ namespace PosSelfService.Controllers
 
                 filteredListMmsr = objMmsr.Where(p => p.PLU_JUAL == id).ToList();
                 groupKelMmsr = filteredListMmsr.GroupBy(p => p.PLU_BHN_BAKU).Select(group => group.First().PLU_BHN_BAKU).ToList();
+            }
+            else
+            {
+                return RedirectToAction("Index");
             }
 
             ViewData["produk"] = produk;

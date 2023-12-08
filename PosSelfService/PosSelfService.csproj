@@ -135,10 +135,8 @@
     <Compile Include="Common\ClsPackaging.cs" />
     <Compile Include="Common\ClsSql.cs" />
     <Compile Include="Common\ClsToko.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InitialController.cs" />
     <Compile Include="Controllers\KeranjangController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\PembayaranController.cs" />
     <Compile Include="Global.asax.cs">
@@ -147,7 +145,6 @@
     <Compile Include="Models\AjaxResult.cs" />
     <Compile Include="Common\DefaultImage.cs" />
     <Compile Include="Models\KeranjangModel.cs" />
-    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ProdukModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
@@ -256,15 +253,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Main\Index.cshtml" />
     <Content Include="Views\Main\_GridView.cshtml" />
     <Content Include="Views\Main\SpecialAdditional.cshtml" />
     <Content Include="Views\Initial\Index.cshtml" />
     <Content Include="Views\Initial\_GridView.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Pembayaran\Index.cshtml" />
     <Content Include="Views\Keranjang\Index.cshtml" />
     <Content Include="Views\Pembayaran\PembayaranBarcode.cshtml" />

@@ -64,35 +64,37 @@
 
                 <div class="container-fluid coffeedetail">
 
-                    @for (int i = 0; i < groupMmsr.Count; i++)
-                    {
-                        <div class="row" style="padding: 11px" rowKelSpecReq>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
-                                <h5 id="@groupMmsr[i]" style="margin-bottom: 20px;" lblKelSpecReq>Pilih :</h5>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-12 d-flex justify-content-end">
-                                <p>Pilih salah satu</p>
-                            </div>
-                            @for (int j = 0; j < listMmsr.Count; j++)
-                            {
-                                if (listMmsr[j].PLU_BHN_BAKU == groupMmsr[i])
+                    <div rowKelSpecMmsr>
+                        @for (int i = 0; i < groupMmsr.Count; i++)
+                        {
+                            <div class="row" style="padding: 11px">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                                    <h5 id="Mmsr" style="margin-bottom: 20px;" lblKelSpecReq>Pilih :</h5>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-12 d-flex justify-content-end">
+                                    <p>Pilih salah satu</p>
+                                </div>
+                                @for (int j = 0; j < listMmsr.Count; j++)
                                 {
-                                    <div class="col-lg-3 col-md-3 col-sm-4 col-4 d-flex justify-content-center" style="margin-bottom:20px">
-                                        <button type="button" class="button-wrap text-truncate btn btn-outline-secondary" style="box-shadow: 1px 3px #888888;" data-max-active="1"
-                                                value= "@listMmsr[j].KET_SPEC_REQ">
-                                            @listMmsr[j].KET_SPEC_REQ
-                                            <h6 style="font-size: smaller;margin-top:16px" class="text-truncate">@listMmsr[j].VALUE_SR @listMmsr[j].SATUAN</h6>
-                                        </button>
-                                    </div>
+                                    if (listMmsr[j].PLU_BHN_BAKU == groupMmsr[i])
+                                    {
+                                        <div class="col-lg-3 col-md-3 col-sm-4 col-4 d-flex justify-content-center" style="margin-bottom:20px">
+                                            <button type="button" class="button-wrap text-truncate btn btn-outline-secondary" style="box-shadow: 1px 3px #888888;" data-max-active="1"
+                                                    value="@listMmsr[j].KET_SPEC_REQ">
+                                                @listMmsr[j].KET_SPEC_REQ
+                                                <h6 style="font-size: smaller;margin-top:16px" class="text-truncate">@listMmsr[j].VALUE_SR @listMmsr[j].SATUAN</h6>
+                                            </button>
+                                        </div>
+                                    }
                                 }
-                            }
-                        </div>
-                        <hr />
-                    }
+                            </div>
+                            <hr />
+                        }
+                    </div>
 
                     @for (int i = 0; i < groupMasr.Count; i++)
                     {
-                        <div class="row" style="padding: 11px" rowKelSpecReq>
+                        <div class="row" style="padding: 11px" rowKelSpecMasr>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-12">
                                 <h5 id="@groupMasr[i].KEL_SPCL_REQ" style="margin-bottom: 20px;" lblKelSpecReq>Pilih @groupMasr[i].KEL_SPCL_REQ :</h5>
                             </div>
@@ -120,9 +122,9 @@
                 <footer style="padding-bottom: 35px;padding-top: 23px;">
                     <div class="container-fluid">
                         <div class="input-group d-flex justify-content-center align-items-center">
-                            <button class="nav-link btn btn-secondary btn-lg " href="/Main/Index" style="margin-right: 12px; height: 70px;padding: 20px;">
+                            <a class="nav-link btn btn-secondary btn-lg " href="/Main/Index" style="margin-right: 12px; height: 70px;padding: 20px;">
                                 Kembali
-                            </button>
+                            </a>
                             <button type="button" class="btn btn-outline-secondary" style="height: 70px;padding: 20px;" onclick="decrementQuantity()">-</button>
                             <h5 id="productQuantity" class="text-center" style="width: 70px;margin-top: 8px;">@quantity</h5>
                             <button type="button" class="btn btn-primary" style="height: 70px;padding: 20px;" onclick="incrementQuantity()">+</button>
@@ -178,19 +180,36 @@
             $(".loader-div").show();
 
             var additionalBhn = [];
-            const additionalKel = document.querySelectorAll("div[rowKelSpecReq]");
-            additionalKel.forEach(group => {
+
+            //Mmsr
+            const additionalMmsr = document.querySelector("div[rowKelSpecMmsr]");
+            const btnActiveMmsr = additionalMmsr.querySelectorAll(".btn.active");
+            var bhnMMsr = "";
+            btnActiveMmsr.forEach(button => {
+                bhnMMsr += button.value + ", ";
+            });
+            if (bhnMMsr != "") {
+                bhnMMsr = bhnMMsr.substring(0, bhnMMsr.length - 2);
+            }
+            var itemMMsr = {
+                kelSpecReq: "Additional",
+                objAdditional: bhnMMsr
+            };
+            additionalBhn.push(itemMMsr)
+
+            //Masr
+            const additionalMasr = document.querySelectorAll("div[rowKelSpecMasr]");
+            additionalMasr.forEach(group => {
                 const btnActive = group.querySelectorAll(".btn.active");
                 const lblSpec = group.querySelector("h5[lblKelSpecReq]");
                 var idLbl = lblSpec.id;
                 var bhn = "";
 
                 btnActive.forEach(button => {
-                    bhn += button.value + ",";
+                    bhn += button.value + ", ";
                 });
-
                 if (bhn != "") {
-                    bhn.substring(0, bhn.length - 1);
+                    bhn = bhn.substring(0, bhn.length - 2);
                 }
 
                 var item = {
