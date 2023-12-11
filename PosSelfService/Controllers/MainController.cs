@@ -210,7 +210,7 @@ namespace PosSelfService.Controllers
             return PartialView("_PanelCart");
         }
 
-        public ActionResult SpecialAdditional(string id, int qty)
+        public ActionResult SpecialAdditional(string prdcd, int qty, int id = 0)
         {
             var data = Session["objKumpulanBarangMain"] as ClsKumpulanBarang;
             var objMasr = Session["objMasr"] as List<ClsMasr>;
@@ -219,24 +219,25 @@ namespace PosSelfService.Controllers
             List<ClsMasr> groupKelMasr = new List<ClsMasr>();
             List<String> groupKelMmsr = new List<String>();
 
-            List<ClsBarang> produkList = data.DaftarBarang.Where(p => p.PLU == id).ToList();
-
             ClsBarang produk = new ClsBarang();
             List<ClsMasr> filteredListMasr = new List<ClsMasr>();
             List<ClsMmsr> filteredListMmsr = new List<ClsMmsr>();
+
+            List<ClsBarang> produkList = data.DaftarBarang.Where(p => p.PLU == prdcd).ToList();
+
             if (produkList.Count > 0)
             {
                 produk = produkList[0];
 
-                filteredListMasr = objMasr.Where(p => p.PLU_JUAL == id).ToList();
+                filteredListMasr = objMasr.Where(p => p.PLU_JUAL == prdcd).ToList();
                 groupKelMasr = filteredListMasr.GroupBy(p => p.KEL_SPCL_REQ).Select(group => group.First()).ToList();
 
-                filteredListMmsr = objMmsr.Where(p => p.PLU_JUAL == id).ToList();
+                filteredListMmsr = objMmsr.Where(p => p.PLU_JUAL == prdcd).ToList();
                 groupKelMmsr = filteredListMmsr.GroupBy(p => p.PLU_BHN_BAKU).Select(group => group.First().PLU_BHN_BAKU).ToList();
             }
             else
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "NotFound");
             }
 
             ViewData["produk"] = produk;

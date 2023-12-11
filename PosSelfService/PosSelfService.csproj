@@ -138,6 +138,7 @@
     <Compile Include="Controllers\InitialController.cs" />
     <Compile Include="Controllers\KeranjangController.cs" />
     <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\NotFoundController.cs" />
     <Compile Include="Controllers\PembayaranController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -159,6 +160,7 @@
     <Content Include="Assets\css\bootstrap.min.css" />
     <Content Include="Assets\css\loader.css" />
     <Content Include="Assets\css\style-tracking.css" />
+    <Content Include="Assets\css\style-not-found-page.css" />
     <Content Include="Assets\css\styleee2.css" />
     <Content Include="Assets\css\sweetalert2.css" />
     <Content Include="Assets\css\sweetalert2.min.css" />
@@ -202,6 +204,7 @@
     <Content Include="Assets\image\saybread.jpeg" />
     <Content Include="Assets\image\sayburger.jpg" />
     <Content Include="Assets\image\small.png" />
+    <Content Include="Assets\image\text.png" />
     <Content Include="Assets\js\bootstrap.bundle.js" />
     <Content Include="Assets\js\bootstrap.bundle.min.js" />
     <Content Include="Assets\js\bootstrap.js" />
@@ -263,6 +266,7 @@
     <Content Include="Views\Pembayaran\PembayaranBarcode.cshtml" />
     <Content Include="Views\Pembayaran\PembayaranKartu.cshtml" />
     <Content Include="Views\Main\_PanelCart.cshtml" />
+    <Content Include="Views\NotFound\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
