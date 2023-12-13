@@ -127,7 +127,7 @@
             </div>
 
             <div id="divGrid">
-                @Html.Partial("_GridView");
+                @Html.Partial("_GridView")
             </div>
 
         </div>
@@ -195,7 +195,6 @@
         }
 
         function goToSpecReq(produkKode) {
-            $(".loader-div").show();
             if ($('#txtProductQuantity').val() < 1) {
                 $('#productModal').modal('hide');
                 alertPesanError('Jumlah produk yang ingin dipesan harus lebih dari 0');
@@ -336,7 +335,7 @@
             $(".loader-div").show();
             $.ajax({
                 type: "POST",
-                url: "/Main/UpdateKeKeranjang",
+                url: "/Main/UpdateQtyKeranjangPanelCart",
                 data: {
                     id: idKeranjang,
                     qty: produkQty

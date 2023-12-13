@@ -1,5 +1,5 @@
-﻿@{
-    int totalHarga = (int)ViewData["totalHarga"];
+﻿
+@{
     Layout = null;
 }
 
@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Pembayaran Page</title>
+    <title>Pembayaran Selesai</title>
     <link rel="stylesheet" href="~/Assets/css/styleee2.css" />
     <link href="~/Assets/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="~/Assets/css/style-tracking.css" />
@@ -31,13 +31,13 @@
                         <h6>Pesan</h6>
                     </span>
                 </div>
-                <div class="step-wizard-item current-item">
+                <div class="step-wizard-item">
                     <span class="progress-count">2</span>
                     <span class="progress-label">
                         <h6>Bayar</h6>
                     </span>
                 </div>
-                <div class="step-wizard-item">
+                <div class="step-wizard-item current-item">
                     <span class="progress-count">3</span>
                     <span class="progress-label">
                         <h6>Selesai</h6>
@@ -51,26 +51,25 @@
                 <div class="row">
                     <div class="col-9 mx-auto">
                         <h1 class="text-center">
-                            Scan barcode berikut untuk melakukan pembayaran
+                            Pembayaran berhasil!
                         </h1>
                     </div>
                     <div class="col-9 mx-auto" style="margin-top:50px;margin-bottom:50px">
                         <div class="card">
-                            <div class="card-body">
-                                <h3 class="text-center">Total</h3>
-                                <h1 class="text-center">Rp @totalHarga.ToString("N0")</h1>
+                            <div class="card-body" style="background-color:burlywood">
+                                <h3 class="text-center">No antrian anda : </h3>
+                                <h1 class="text-center">X001</h1>
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 mx-auto" style="margin-top:50px;margin-bottom:50px">
-                        <img src="~/Assets/image/sample_barcode.png" alt="" class="img-fluid">
+                    <div class="col-9 mx-auto" style="margin-top:50px;margin-bottom:50px">
+                        <h3 style="margin-bottom:20px">1. Silahkan tunggu pesanan anda di meja yang tersedia</h3>
+                        <h3>2. Ketika nomor antrian anda muncul di layar, anda dapat mengambil di konter yang tersedia</h3>
                     </div>
                 </div>
             </div>
-
 
         </div>
     </div>
 </body>
 </html>
-

@@ -20,6 +20,8 @@ namespace PosSelfService.Models
     public class AdditionalRequestModel
     {
         public string kelSpecReq { get; set; }
+        public string typeAdditional { get; set; }
+        public int maxAdditional { get; set; }
         public string objAdditional { get; set; }
     }
 }

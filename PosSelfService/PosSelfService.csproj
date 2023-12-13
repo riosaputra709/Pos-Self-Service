@@ -267,6 +267,9 @@
     <Content Include="Views\Pembayaran\PembayaranKartu.cshtml" />
     <Content Include="Views\Main\_PanelCart.cshtml" />
     <Content Include="Views\NotFound\Index.cshtml" />
+    <Content Include="Views\Pembayaran\Selesai.cshtml" />
+    <Content Include="Views\Main\_AddSpecialAdditional.cshtml" />
+    <Content Include="Views\Main\_UpdateSpecialAdditional.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

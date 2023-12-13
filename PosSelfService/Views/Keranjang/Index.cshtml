@@ -64,6 +64,8 @@
                         {
                             for (int i = 0; i < listCart.Count; i++)
                             {
+                                string listAddtionalMmsr = "";
+
                                 <div class="card" style="margin-bottom: 10px;">
                                     <div class="card-body">
                                         <div class="row">
@@ -80,7 +82,26 @@
                                                     {
                                                         if (listCart[i].additionalRequests[j].objAdditional != null)
                                                         {
-                                                            <h6 style="font-size:smaller">@listCart[i].additionalRequests[j].kelSpecReq : @listCart[i].additionalRequests[j].objAdditional</h6>
+                                                            if (listCart[i].additionalRequests[j].typeAdditional == "mmsr")
+                                                            {
+                                                                listAddtionalMmsr += @listCart[i].additionalRequests[j].objAdditional + ", ";
+                                                            }
+                                                        }
+                                                    }
+
+                                                    if (!String.IsNullOrEmpty(listAddtionalMmsr))
+                                                    {
+                                                        <h6 style="font-size:smaller">Additional : @listAddtionalMmsr.Remove(listAddtionalMmsr.Length -2)</h6>
+                                                    }
+
+                                                    for (int j = 0; j < listCart[i].additionalRequests.Count; j++)
+                                                    {
+                                                        if (listCart[i].additionalRequests[j].objAdditional != null)
+                                                        {
+                                                            if (listCart[i].additionalRequests[j].typeAdditional == "masr")
+                                                            {
+                                                                <h6 style="font-size:smaller">@listCart[i].additionalRequests[j].kelSpecReq : @listCart[i].additionalRequests[j].objAdditional</h6>
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -121,7 +142,7 @@
                         </div>
                         <div class="col-lg-3 col-md-3 col-4">
                             <a href="/Main/Index" type="button" class="btn btn-outline-secondary btn-block" style="padding-top:7px; padding-bottom:7px">Kembali</a>
-                            <button type="button" class="btn btn-danger btn-block btn-lg" onclick="btnBayar_onclick()">Bayar</button>
+                            <a href="/Pembayaran/Index" type="button" class="btn btn-danger btn-block btn-lg">Bayar</a>
                         </div>
                     </div>
                 </div>

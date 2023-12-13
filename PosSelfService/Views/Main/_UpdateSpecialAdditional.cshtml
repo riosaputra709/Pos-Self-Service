@@ -1,0 +1,111 @@
+﻿@using PosSelfService.Common;
+@using PosSelfService.Models;
+@{
+    List<ClsMasr> listMasr = (List<ClsMasr>)ViewData["listMasr"];
+    List<ClsMmsr> listMmsr = (List<ClsMmsr>)ViewData["listMmsr"];
+
+    List<AdditionalRequestModel> cartMasr = (List<AdditionalRequestModel>)ViewData["cartAdditionalListMasr"];
+    List<AdditionalRequestModel> cartMmsr = (List<AdditionalRequestModel>)ViewData["cartAdditionalListMmsr"];
+
+    int quantity = (int)ViewData["quantity"];
+
+    Layout = null;
+}
+
+<div class="container-fluid coffeedetail">
+
+
+    @for (int i = 0; i < cartMmsr.Count; i++)
+    {
+        <div id="mmsr" class="row" style="padding: 11px" rowKelSpec>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <h5 id="@cartMmsr[i].kelSpecReq" style="margin-bottom: 20px;" lblKelSpecReq>Pilih :</h5>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-12 d-flex justify-content-end">
+                <p id="@cartMmsr[i].kelSpecReq" lblMaxSpecReq>Pilih salah satu</p>
+            </div>
+            @for (int j = 0; j < listMmsr.Count; j++)
+            {
+                if (listMmsr[j].PLU_BHN_BAKU == cartMmsr[i].kelSpecReq)
+                {
+                    string objAdditional = cartMmsr[i].objAdditional == null ? "" : cartMmsr[i].objAdditional; 
+                    if (objAdditional.Contains(listMmsr[j].KET_SPEC_REQ))
+                    {
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4 d-flex justify-content-center" style="margin-bottom:20px">
+                            <button type="button" class="button-wrap text-truncate btn active" style="box-shadow: 1px 3px #888888;" data-max-active="1"
+                                    value="@listMmsr[j].KET_SPEC_REQ">
+                                @listMmsr[j].KET_SPEC_REQ
+                                <h6 style="font-size: smaller;margin-top:16px" class="text-truncate">@listMmsr[j].VALUE_SR @listMmsr[j].SATUAN</h6>
+                            </button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4 d-flex justify-content-center" style="margin-bottom:20px">
+                            <button type="button" class="button-wrap text-truncate btn btn-outline-secondary" style="box-shadow: 1px 3px #888888;" data-max-active="1"
+                                    value="@listMmsr[j].KET_SPEC_REQ">
+                                @listMmsr[j].KET_SPEC_REQ
+                                <h6 style="font-size: smaller;margin-top:16px" class="text-truncate">@listMmsr[j].VALUE_SR @listMmsr[j].SATUAN</h6>
+                            </button>
+                        </div>
+                    }
+                }
+            }
+        </div>
+        <hr />
+    }
+
+    @for (int i = 0; i < cartMasr.Count; i++)
+    {
+        <div id="masr" class="row" style="padding: 11px" rowKelSpec>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <h5 id="@cartMasr[i].kelSpecReq" style="margin-bottom: 20px;" lblKelSpecReq>Pilih @cartMasr[i].kelSpecReq :</h5>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-12 d-flex justify-content-end">
+                <p id="@cartMasr[i].maxAdditional" lblMaxSpecReq>Optional, Pilih maksimal @cartMasr[i].maxAdditional @cartMasr[i].kelSpecReq</p>
+            </div>
+            @for (int j = 0; j < listMasr.Count; j++)
+            {
+                if (listMasr[j].KEL_SPCL_REQ == cartMasr[i].kelSpecReq)
+                {
+                    string objAdditional = cartMasr[i].objAdditional == null ? "" : cartMasr[i].objAdditional; 
+                    if (objAdditional.Contains(listMasr[j].KET_SPECIAL_REQUEST)) 
+                    {
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4 d-flex justify-content-center" style="margin-bottom:20px">
+                            <button type="button" class="button-wrap text-truncate btn active" style="box-shadow: 1px 3px #888888; min-height: 68px;" data-max-active="@listMasr[j].MAX_ADD"
+                                    value="@listMasr[j].KET_SPECIAL_REQUEST">
+                                @listMasr[j].KET_SPECIAL_REQUEST
+                            </button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-4 d-flex justify-content-center" style="margin-bottom:20px">
+                            <button type="button" class="button-wrap text-truncate btn btn-outline-secondary" style="box-shadow: 1px 3px #888888; min-height: 68px;" data-max-active="@listMasr[j].MAX_ADD"
+                                    value="@listMasr[j].KET_SPECIAL_REQUEST">
+                                @listMasr[j].KET_SPECIAL_REQUEST
+                            </button>
+                        </div>
+                    }
+                }
+            }
+        </div>
+        <hr />
+    }
+</div>
+
+<hr />
+
+<footer style="padding-bottom: 33px;padding-top: 23px;">
+    <div class="container-fluid">
+        <div class="input-group d-flex justify-content-center align-items-center">
+            <a class="nav-link btn btn-secondary btn-lg " href="/Main/Index" style="margin-right: 12px; height: 70px;padding: 20px;">
+                Kembali
+            </a>
+            <button type="button" class="btn btn-outline-secondary" style="height: 70px;padding: 20px;" onclick="decrementQuantity()">-</button>
+            <h5 id="productQuantity" class="text-center" style="width: 70px;margin-top: 8px;">@quantity</h5>
+            <button type="button" class="btn btn-primary" style="height: 70px;padding: 20px;" onclick="incrementQuantity()">+</button>
+            <a class="nav-link btn btn-danger btn-lg" style="margin-left: 12px;height: 70px;padding: 20px;color:white" onclick="UpdateToCart()">Pesan</a>
+        </div>
+    </div>
+</footer>

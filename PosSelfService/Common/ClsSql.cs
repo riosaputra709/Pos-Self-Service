@@ -117,6 +117,10 @@ namespace PosSelfService.Common
             }
             finally
             {
+                if (mcon.State != ConnectionState.Closed)
+                {
+                    mcon.Close();
+                }
                 mcom.Dispose();
             }
 
