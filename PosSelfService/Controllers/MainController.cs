@@ -14,7 +14,9 @@ namespace PosSelfService.Controllers
 {
     public class MainController : Controller
     {
-        private MainRepository mainRepo = MainRepository.Instance;
+        //private MainRepository mainRepo = MainRepository.Instance;
+
+        #region Index Page
         // GET: Main
         public ActionResult Index()
         {
@@ -105,6 +107,9 @@ namespace PosSelfService.Controllers
                 cart.name = filteredData.Nama;
                 cart.price = int.Parse(filteredData.HargaJualRp.ToString()) * qty;
                 cart.image = filteredData.ProductImageString;
+                cart.merk = filteredData.Merk;
+                cart.mmsr = filteredData.mmsr;
+                cart.masr = filteredData.masr;
 
                 //cek apakah produk sebelumnya sudah ada
                 if (System.Web.HttpContext.Current.Session["keranjang_belanja"] != null)
@@ -153,6 +158,7 @@ namespace PosSelfService.Controllers
             }
             
         }
+        #endregion
 
         #region Panel Cart
         public ActionResult UpdateQtyKeranjangPanelCart(int id, int qty)
@@ -162,6 +168,8 @@ namespace PosSelfService.Controllers
             int indexListCart = listCart.FindIndex(item => item.id == id); //mencari data yang sama di keranjang
             
             KeranjangModel itemToUpdate = listCart[indexListCart];
+
+            //update qty dan harga saja
             int hargasatuan = itemToUpdate.price / itemToUpdate.qty; 
             itemToUpdate.qty = qty;
             itemToUpdate.price = hargasatuan * qty;
@@ -292,6 +300,9 @@ namespace PosSelfService.Controllers
                 cart.price = int.Parse(filteredData.HargaJualRp.ToString()) * qty;
                 cart.image = filteredData.ProductImageString;
                 cart.additionalRequests = bahan;
+                cart.merk = filteredData.Merk;
+                cart.mmsr = filteredData.mmsr;
+                cart.masr = filteredData.masr;
 
                 //cek apakah produk sebelumnya sudah ada
                 if (System.Web.HttpContext.Current.Session["keranjang_belanja"] != null)
@@ -381,6 +392,8 @@ namespace PosSelfService.Controllers
                 int indexListCart = listCart.FindIndex(item => item.id == id && item.prdcd == prdcd);
 
                 KeranjangModel itemToUpdate = listCart[indexListCart];
+                
+                //diubah harga, quantity, dan additional request
                 int hargasatuan = itemToUpdate.price / itemToUpdate.qty;
                 itemToUpdate.qty = qty;
                 itemToUpdate.price = hargasatuan * qty;

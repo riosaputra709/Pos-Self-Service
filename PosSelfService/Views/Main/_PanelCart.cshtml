@@ -26,6 +26,39 @@
         </div>
         <div class="cart-content">
 
+            @if (@listCart != null)
+            {
+                for (int i = 0; i < listCart.Count; i++)
+                {
+                    <div class="card" style="margin-bottom: 7px;padding: 3px;">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center">
+                                @if (listCart[i].mmsr == "Y" || listCart[i].masr == "Y")
+                                {
+                                    <a href="/Main/SpecialAdditional?prdcd=@listCart[i].prdcd&qty=@listCart[i].qty&id=@listCart[i].id">
+                                        <img src="@listCart[i].image" alt="" class="img-thumbnail">
+                                    </a>
+                                }
+                                else
+                                {
+                                    <img src="@listCart[i].image" alt="" class="img-thumbnail">
+                                }
+
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 nopadding" style="margin-top: 5px;">
+                                <h5 style="font-size: x-small;margin-top: 10px;"><b>@listCart[i].name</b></h5>
+                                <h5 class="text-primary" style="font-size: x-small;">@listCart[i].price.ToString("N0")</h5>
+                                <div class="input-group" style="margin-top: 15px;">
+                                    <button class="button-xs" onclick="decrementQuantityPC(@i, '@listCart[i].id')">-</button>
+                                    <p class="text-center" id="lblQtyPC_@i" style="margin-left: 5px;margin-right: 5px;margin-top: 5px; font-size: x-small;">@listCart[i].qty</p>
+                                    <button class="button-xs" onclick="incrementQuantityPC(@i, '@listCart[i].id')">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
             @if (totalQty == 0)
             {
                 <h5 id="lblTotalQtyHide" hidden>0</h5>
@@ -42,30 +75,6 @@
             else
             {
                 <h5 id="lblTotalHargaHide" hidden>@totalHarga.ToString("N0")</h5>
-            }
-
-
-            @if (@listCart != null)
-            {
-                for (int i = 0; i < listCart.Count; i++)
-                {
-                    <div class="card" style="margin-bottom: 7px;padding: 3px;">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 d-flex align-items-center">
-                                <img src="@listCart[i].image" alt="" class="img-thumbnail">
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-12 nopadding" style="margin-top: 5px;">
-                                <h5 style="font-size: x-small;margin-top: 10px;"><b>@listCart[i].name</b></h5>
-                                <h5 class="text-primary" style="font-size: x-small;">@listCart[i].price.ToString("N0")</h5>
-                                <div class="input-group" style="margin-top: 15px;">
-                                    <button class="button-xs" onclick="decrementQuantityPC(@i, '@listCart[i].id')">-</button>
-                                    <p class="text-center" id="lblQtyPC_@i" style="margin-left: 5px;margin-right: 5px;margin-top: 5px; font-size: x-small;">@listCart[i].qty</p>
-                                    <button class="button-xs" onclick="incrementQuantityPC(@i, '@listCart[i].id')">+</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }
             }
         </div>
     </div>

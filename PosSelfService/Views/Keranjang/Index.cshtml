@@ -13,7 +13,7 @@
     <title>Keranjang Page</title>
     <link href="~/Assets/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="~/Assets/css/style-tracking.css" />
-    <link rel="stylesheet" href="~/Assets/css/styleee2.css" />
+    <link rel="stylesheet" href="~/Assets/css/style-custom.css" />
     <link rel="stylesheet" href="~/Assets/css/loader.css">
     <link rel="stylesheet" href="~/Assets/css/sweetalert2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -73,8 +73,21 @@
                                                 <img src="@listCart[i].image" alt="" class="img-thumbnail">
                                             </div>
                                             <div class="col-7 col-lg-9">
-                                                <h5>POINT COFFEE</h5>
-                                                <h5>@listCart[i].name</h5>
+                                                @if (listCart[i].mmsr == "Y" || listCart[i].masr == "Y")
+                                                {
+                                                    <a href="/Main/SpecialAdditional?prdcd=@listCart[i].prdcd&qty=@listCart[i].qty&id=@listCart[i].id">
+                                                        <h5>@listCart[i].merk</h5>
+                                                    </a>
+                                                    <a href="/Main/SpecialAdditional?prdcd=@listCart[i].prdcd&qty=@listCart[i].qty&id=@listCart[i].id">
+                                                        <h5>@listCart[i].name</h5>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <h5 class="text-primary">@listCart[i].merk</h5>
+                                                    <h5 class="text-primary">@listCart[i].name</h5>
+                                                }
+
                                                 @if (listCart[i].additionalRequests != null)
                                                 {
                                                     <br />
@@ -91,7 +104,7 @@
 
                                                     if (!String.IsNullOrEmpty(listAddtionalMmsr))
                                                     {
-                                                        <h6 style="font-size:smaller">Additional : @listAddtionalMmsr.Remove(listAddtionalMmsr.Length -2)</h6>
+                                                        <h6 style="font-size:smaller">Additional : @listAddtionalMmsr.Remove(listAddtionalMmsr.Length - 2)</h6>
                                                     }
 
                                                     for (int j = 0; j < listCart[i].additionalRequests.Count; j++)

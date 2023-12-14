@@ -161,7 +161,7 @@
     <Content Include="Assets\css\loader.css" />
     <Content Include="Assets\css\style-tracking.css" />
     <Content Include="Assets\css\style-not-found-page.css" />
-    <Content Include="Assets\css\styleee2.css" />
+    <Content Include="Assets\css\style-custom.css" />
     <Content Include="Assets\css\sweetalert2.css" />
     <Content Include="Assets\css\sweetalert2.min.css" />
     <Content Include="Assets\image\banner1.jpg" />

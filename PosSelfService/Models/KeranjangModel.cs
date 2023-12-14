@@ -13,7 +13,9 @@ namespace PosSelfService.Models
         public int price { get;set; }
         public string image { get; set; }
         public int qty { get; set;}
-
+        public string merk { get; set; }
+        public string mmsr { get; set; }
+        public string masr { get; set; }
         public List<AdditionalRequestModel> additionalRequests { get; set; }
     }
 
