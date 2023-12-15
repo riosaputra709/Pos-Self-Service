@@ -295,7 +295,16 @@
         }
 
         function btnbayar_onclick() {
-            window.location.href = "/Keranjang/Index";
+            if ($("#lblTotalQtyHide").text() == 0) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Belum ada produk didalam keranjang belanja'
+                })
+            }
+            else {
+                window.location.href = "/Keranjang/Index";
+            }
         }
 
         function decrementQuantity() {
