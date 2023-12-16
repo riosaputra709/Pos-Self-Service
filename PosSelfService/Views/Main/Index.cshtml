@@ -271,6 +271,11 @@
         }
 
         function onSearchCriteria(katprod) {
+            /*var cartPanel = document.getElementById("cart");
+            if (cartPanel.classList.contains("show")) {
+                cartPanel.classList.remove("show");
+            } */
+
             $(".loader-div").show();
             kategory_produk = katprod;
             $.ajax({
