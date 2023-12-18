@@ -64,6 +64,7 @@ namespace PosSelfService.Controllers
             }
 
             ViewData["produklist"] = filteredData;
+            ViewData["merk"] = merk;
         }
 
         public ActionResult Search(ProdukModel produk)

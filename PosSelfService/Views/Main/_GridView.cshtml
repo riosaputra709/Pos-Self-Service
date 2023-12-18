@@ -1,6 +1,7 @@
 ﻿@using PosSelfService.Common;
 @{
     List<ClsBarang> listBarang = (List<ClsBarang>)ViewData["produklist"];
+    string merk = (string)ViewData["merk"];
     Layout = null;
 }
 
@@ -8,7 +9,7 @@
     <div class="row">
         <!--Produk Kategori-->
         <div class="col-3 text-center">
-            @if (listBarang[0].Merk == "POINT COFFEE")
+            @if (merk == "POINT COFFEE")
             {
                 <img src="../../Assets/image/idm_poinntcoffee.jpeg" class="image-highlight" alt=""
                      style="height: 160px; margin-bottom: 12px; border-radius: 0.5rem; width: 100%; cursor: pointer;" onclick="onSearchCriteria('POINT COFFEE')">
@@ -19,7 +20,7 @@
                      style="height: 160px; margin-bottom: 12px; border-radius: 0.5rem; width: 100%; cursor: pointer;" onclick="onSearchCriteria('POINT COFFEE')">
             }
 
-            @if (listBarang[0].Merk == "SAY BREAD")
+            @if (merk == "SAY BREAD")
             {
                 <img src="../../Assets/image/idm_saybread.jpeg" class="image-highlight" alt=""
                      style="height: 160px; margin-bottom: 12px; border-radius: 0.5rem; width: 100%; cursor: pointer;" onclick="onSearchCriteria('SAY BREAD')">
@@ -30,7 +31,7 @@
                      style="height: 160px; margin-bottom: 12px; border-radius: 0.5rem; width: 100%; cursor: pointer;" onclick="onSearchCriteria('SAY BREAD')">
             }
 
-            @if (listBarang[0].Merk == "Y/CHOICE")
+            @if (merk == "Y/CHOICE")
             {
                 <img src="https://c.animaapp.com/q0MeXVJX/img/rectangle-7@2x.png" class="image-highlight" alt=""
                      style="height: 160px; margin-bottom: 12px; border-radius: 0.5rem; width: 100%; cursor: pointer;" onclick="onSearchCriteria('Y/CHOICE')">
@@ -41,7 +42,7 @@
                      style="height: 160px; margin-bottom: 12px; border-radius: 0.5rem; width: 100%; cursor: pointer;" onclick="onSearchCriteria('Y/CHOICE')">
             }
 
-            @if (listBarang[0].Merk == "SAY BURGER")
+            @if (merk == "SAY BURGER")
             {
                 <img src="https://c.animaapp.com/q0MeXVJX/img/say-burger-logo@2x.png" class="image-highlight" alt=""
                      style="height: 160px; margin-bottom: 12px; border-radius: 0.5rem; width: 100%; cursor: pointer;" onclick="onSearchCriteria('SAY BURGER')">
@@ -49,7 +50,7 @@
             else
             {
                 <img src="https://c.animaapp.com/q0MeXVJX/img/say-burger-logo@2x.png" class="img-thumbnail" alt=""
-                    style="height: 160px; margin-bottom: 12px; border-radius: 0.5rem; width: 100%; cursor: pointer;" onclick="onSearchCriteria('SAY BURGER')">
+                     style="height: 160px; margin-bottom: 12px; border-radius: 0.5rem; width: 100%; cursor: pointer;" onclick="onSearchCriteria('SAY BURGER')">
             }
         </div>
 

@@ -270,11 +270,16 @@ namespace PosSelfService.Controllers
                         SQLQuery += "\n" + ", '' AS PERIODEJAM";
                     }
 
-                    //tambahan mmsr dan masr
-                    SQLQuery += "\n" + ", CASE WHEN (SELECT COUNT(plu_jual) FROM pointcafe_masr WHERE plu_jual = PLU) > 0 THEN 'Y' ELSE '' END AS masr";
-                    SQLQuery += "\n" + ", CASE WHEN (SELECT COUNT(plu_jual) FROM pointcafe_mmsr WHERE plu_jual = PLU) > 0 THEN 'Y' ELSE '' END AS mmsr";
+                    //tambahan mmsr dan masr by rio
+                    SQLQuery += "\n" + ", CASE WHEN masr_count > 0 THEN 'Y' ELSE '' END AS masr";
+                    SQLQuery += "\n" + ", CASE WHEN mmsr_count > 0 THEN 'Y' ELSE '' END AS mmsr";
 
                     SQLQuery += "\n" + " FROM PRODMAST P";
+
+                    //tambahan mmsr dan masr by rio
+                    SQLQuery += "\n" + "LEFT JOIN (SELECT plu_jual, COUNT(1) AS masr_count FROM pointcafe_masr GROUP BY plu_jual) PMA ON P.PRDCD = PMA.plu_jual";
+                    SQLQuery += "\n" + "LEFT JOIN (SELECT plu_jual, COUNT(1) AS mmsr_count FROM pointcafe_mmsr GROUP BY plu_jual) PMM ON P.PRDCD = PMM.plu_jual";
+
                     SQLQuery += "\n" + " LEFT JOIN (";
                     SQLQuery += "\n" + " SELECT PRDCD, MULAI, AKHIR, IF((PRICE - (IF(DISCP>0,DISCP/100*PRICE,0)) - DISCR) > 0,(PRICE - (IF(DISCP>0,DISCP/100*PRICE,0)) - DISCR),0) 'PRICE' FROM PROMOSI WHERE IFNULL(RECID, '') <> '1'"; //link dengan table lain untuk overwrite harga jual, berdasarkan tanggal main
                     SQLQuery += "\n" + " ) R ON P.PRDCD = R.PRDCD AND CURDATE() BETWEEN DATE(R.MULAI) AND DATE(R.AKHIR)";
