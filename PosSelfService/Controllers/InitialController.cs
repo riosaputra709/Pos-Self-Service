@@ -74,11 +74,13 @@ namespace PosSelfService.Controllers
                     else
                     {
                         _ObjError.Tracelog("Gagal query Initial (rows.count = 0)");
+                        //throw new Exception("Gagal query Initial (rows.count = 0)");
                     }
                 }
                 else
                 {
                     _ObjError.Tracelog("Gagal query Initial (dt is nothing)");
+                    //throw new Exception("Gagal query Initial (dt is nothing)");
                 }
                 Session["objInitial"] = objInitial;
                 Session["objKasir"] = objKasir;

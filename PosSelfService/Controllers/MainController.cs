@@ -357,19 +357,7 @@ namespace PosSelfService.Controllers
                 }
 
                 Session["keranjang_belanja"] = result; //perbarui panel cart
-                ViewData["cartlist"] = result;
-
-                int totalHarga = 0;
-                int totalQty = 0;
-
-                for (int i = 0; i < result.Count; i++)
-                {
-                    totalHarga += result[i].price;
-                    totalQty += result[i].qty;
-                }
-                ViewData["totalHarga"] = totalHarga;
-                ViewData["totalQty"] = totalQty;
-
+                
                 ajaxResult.Result = AjaxResult.VALUE_SUCCESS;
             }
             catch (Exception ex)
